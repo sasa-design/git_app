@@ -1,0 +1,27 @@
+{
+  "name": "rails-vue-app",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.2.1",
+    "axios": "^0.21.1",
+    "jquery": "^3.6.0",
+    "material-design-icons": "^3.0.1",
+    "materialize-css": "^1.0.0",
+    "qs": "^6.10.1",
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.12",
+    "vue-axios": "^3.2.4",
+    "vue-loader": "^15.9.6",
+    "vue-router": "^3.5.1",
+    "vue-template-compiler": "^2.6.12",
+    "vuex": "^3.6.2"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}

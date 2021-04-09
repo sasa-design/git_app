@@ -1,0 +1,1 @@
+json.extract! @profile, :age, :sex, :living, :height, :look, :type, :holiday, :smoke, :drink,:detail
