@@ -118,7 +118,6 @@ export default {
     data: function(){
         return{
             room:{
-                user_id: 27,
                 area: '',
                 genre: '',
                 artist: '',

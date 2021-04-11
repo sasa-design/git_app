@@ -1,6 +1,6 @@
 import axios from 'axios';
 const state = {
-  currentUser: null
+  currentUser: null,
 };  
 
 const getters = {
@@ -25,8 +25,7 @@ const mutations = {
 const actions = {
   async login({ commit }, sessionParams) {
     const res = await axios.post('/api/sessions', sessionParams);
-    const user = res.data;
-    commit('SET_CURRENT_USER', user);
+    commit('SET_CURRENT_USER', res.data.user);
   },
   logout({ commit }) {
     commit('CLEAR_CURRENT_USER');

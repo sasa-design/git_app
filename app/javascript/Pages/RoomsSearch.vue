@@ -13,7 +13,7 @@
     </div>
 </nav>
     <div class="container">
-    <form class="col" :model="query">
+    <form class="col">
         <div class="row">
             <div class="input-field col s12">
                 <select style="display:block" v-model="query.area_eq">
@@ -102,10 +102,34 @@
         </div>
     </form>
     </div>
+    <div class="row center-align" v-show="searchInfoBool">
+        <table>
+            <thead>
+                <tr>
+                    <th>場所</th>
+                    <th>ジャンル</th>
+                    <th>アーティスト</th>
+                    <th>日付</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody v-for="room in rooms">
+                <tr>
+                    <td>{{room.area}}</td>
+                    <td>{{room.genre}}</td>
+                    <td>{{room.artist}}</td>
+                    <td>{{room.date}}</td>
+                    <td><router-link :to="{ path: `/search/show/${room.id}`}" class="waves-effect waves-light btn">気になる</router-link>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </template>
 <script>
 import axios from 'axios'
+import qs from 'qs'
 export default {
     data: function(){
         return{
@@ -117,11 +141,21 @@ export default {
                 time_start: '',
             },
             rooms: [],
+            searchInfoBool: false,
+            searchInfo: {},
         }
     },
     methods:{
-        search: function(){
-            axios.get('/api/rooms/search',{params:{q: this.query}})
+        search(){
+            axios.get('/api/search',{
+                params:{
+                    q: this.query
+                },
+                paramsSerializer: function(params) {
+                    return qs.stringify(params)
+                },
+                responseType: 'json'
+            })
             .then(res => {
                 this.rooms=res.data
             });

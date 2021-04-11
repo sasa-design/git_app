@@ -22,7 +22,7 @@
         </span>
     </div>
     <div class="card-content">
-        <p>{{userName}}・{{profileInfo.age}}・{{profileInfo.sex}}</p>
+        <p>{{profileInfo.user.name}}・{{profileInfo.age}}・{{profileInfo.sex}}</p>
     </div>
   </div>
   <div class="container">
@@ -68,21 +68,13 @@ export default {
       profileInfo:{},
     }
   },
-  computed: {
-    userId(){
-      return this.$store.getters['auth/currentUser'].id;
-    },
-    userName(){
-      return this.$store.getters['auth/currentUser'].name;
-    }
-  },
   mounted() {
     this.fetchProfile();
   },
 
   methods: {
     async fetchProfile(){
-      await axios.get(`/api/mypage/${this.userId}`)
+      await axios.get('/api/mypage')
       .then(res =>{
         this.profileInfo = res.data;
       });

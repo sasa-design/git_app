@@ -13,7 +13,7 @@ import css from '../css/application.css'
 import js from 'materialize-css/dist/js/materialize.min.js'
 import Store from '../store/store.js'
 import icon from 'material-design-icons/iconfont/material-icons.css'
-import Qs from 'qs'
+import qs from 'qs'
 
 Vue.config.productionTip = false
 
@@ -22,7 +22,7 @@ Vue.use(VueRouter);
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     store:Store,
-    Qs,
+    qs,
     js,
     css,
     icon,

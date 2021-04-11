@@ -50,11 +50,10 @@ export default {
     },
     methods: {
         fetchRooms(){
-            axios.get('/api/rooms').then((res) => {
-                for(var i=0; i < res.data.rooms.length; i++){
-                    this.rooms.push(res.data.rooms[i]);
-                }
-            },(error) => {
+            axios.get('/api/rooms').then(res => {
+                this.rooms = res.data;
+            })
+            .catch(error => {
                 alert("表示できません");
                 console.log(error);
             });
