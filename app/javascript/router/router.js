@@ -11,6 +11,7 @@ import RoomsIndex from '../Pages/RoomsIndex.vue';
 import RoomsEdit from '../Pages/RoomsEdit.vue';
 import RoomsSearch from '../Pages/RoomsSearch.vue';
 import SearchShow from '../Pages/SearchShow.vue';
+import SearchUser from '../Pages/SearchUser.vue';
 
 const router  = new Router({
     routes: [
@@ -21,6 +22,7 @@ const router  = new Router({
       { path: '/rooms/index',component: RoomsIndex},
       { path: '/rooms/search',component: RoomsSearch},
       { path: '/search/show/:id',component: SearchShow},
+      { path: '/search/user/:id',component: SearchUser},
       { path: '/edit/:id',component: RoomsEdit},
       { path: '/mypage/index',component: MypageHome},
       { path: '/mypage/edit',component: MypageEdit},

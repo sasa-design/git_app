@@ -6,6 +6,8 @@ class Api::MypageController < ApplicationController
   end
 
   def show
+    profile = Profile.find_by(user_id: params[:id])
+    render json: profile, serializer: ProfileSerializer
   end
   
   def update

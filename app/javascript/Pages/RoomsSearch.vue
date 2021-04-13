@@ -102,25 +102,24 @@
         </div>
     </form>
     </div>
-    <div class="row center-align" v-show="searchInfoBool">
+    <div class="row">
         <table>
             <thead>
                 <tr>
+                    <th>ユーザー名</th>
                     <th>場所</th>
                     <th>ジャンル</th>
-                    <th>アーティスト</th>
                     <th>日付</th>
-                    <th></th>
+                    <th>ボタン</th>
                 </tr>
             </thead>
-
             <tbody v-for="room in rooms">
                 <tr>
+                    <td>{{room.user.name}}</td>
                     <td>{{room.area}}</td>
                     <td>{{room.genre}}</td>
-                    <td>{{room.artist}}</td>
                     <td>{{room.date}}</td>
-                    <td><router-link :to="{ path: `/search/show/${room.id}`}" class="waves-effect waves-light btn">気になる</router-link>
+                    <td><router-link :to="{ path: `/search/show/${room.id}` }" class="waves-effect waves-light btn">気になる</router-link></td>
                 </tr>
             </tbody>
         </table>
@@ -141,8 +140,6 @@ export default {
                 time_start: '',
             },
             rooms: [],
-            searchInfoBool: false,
-            searchInfo: {},
         }
     },
     methods:{
@@ -154,10 +151,13 @@ export default {
                 paramsSerializer: function(params) {
                     return qs.stringify(params)
                 },
-                responseType: 'json'
             })
             .then(res => {
-                this.rooms=res.data
+                alert('成功')
+                this.rooms = res.data;
+            })
+            .catch(error => {
+                alert('失敗');
             });
         }
     },

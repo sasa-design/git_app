@@ -1,8 +1,7 @@
 class Api::SearchController < ApplicationController
     def index
-        @q = Room.ransack(search_params)
-        @rooms = @q.result
-        render 'index',formats: :json , handlers: 'jbuilder'
+        rooms = Room.ransack(search_params).result
+        render json: rooms, each_serializer: RoomSerializer
     end
 
     private 

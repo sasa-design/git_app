@@ -22,7 +22,7 @@
         </span>
     </div>
     <div class="card-content">
-        <p>{{profileInfo.user.name}}・{{profileInfo.age}}・{{profileInfo.sex}}</p>
+        <p>{{profileInfo.user.name}}・{{profileInfo.age}}</p>
     </div>
   </div>
   <div class="container">
