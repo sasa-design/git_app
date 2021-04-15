@@ -6,13 +6,6 @@
                 <router-link to="/rooms/create" class="breadcrumb">ルーム作成</router-link>
                 <router-link to="/rooms/index" class="breadcrumb">ルーム一覧</router-link>
             </div>
-            <ul class="right hide-on-med-and-down">
-                <li><router-link to="/search"><i class="medium material-icons">search</i></router-link></li>
-                <li><router-link to="/rooms/create"><i class="medium material-icons">music_video</i></router-link></li>
-                <li><router-link to="/message"><i class="medium material-icons">mail_outline</i></router-link></li>
-                <li><router-link to="/mypage"><i class="medium material-icons">person_outline</i></router-link></li>
-                <li><router-link to="/">Top</router-link></li>
-            </ul>
         </div>
     </nav>
     <div class="container">

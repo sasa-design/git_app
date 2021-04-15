@@ -1,7 +1,7 @@
 class Api::MypageController < ApplicationController
-  protect_from_forgery :except => [:index,:show,:update]
+  
   def index
-    profile = Profile.find_by(user_id: current_user.id)
+    profile = Profile.find_or_create_by(user_id: current_user.id)
     render json: profile, serializer: ProfileSerializer
   end
 

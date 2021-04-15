@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  references: 
   area: MyString
   genre: MyString
   artist: MyString
-  date: 2021-04-02
-  time: 2021-04-02 17:23:46
+  date: 2021-04-14
+  time: 2021-04-14 00:09:44
   comment: MyText
 
 two:
-  user: two
+  references: 
   area: MyString
   genre: MyString
   artist: MyString
-  date: 2021-04-02
-  time: 2021-04-02 17:23:46
+  date: 2021-04-14
+  time: 2021-04-14 00:09:44
   comment: MyText

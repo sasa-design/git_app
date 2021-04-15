@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :rooms, only: [:index, :create,:show, :update, :destroy] 
-    resources :users, only: [:create]
+    resources :users, only: [:show, :create]
     resources :mypage, only: [:index, :show,:update]
     resources :sessions, only: [:create, :destroy]
     resources :search, only: [:index]
+    resources :relationship, only: [:index, :show, :create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

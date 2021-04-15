@@ -5,7 +5,7 @@
       <router-link to="/rooms/index" class="left waves-effect waves-light btn-large">ルームを編集</router-link>  
       <router-link to="/" class="center brand-logo">ルーム作成</router-link>
       <ul class="right hide-on-med-and-down">
-        <li><router-link to="/search"><i class="medium material-icons">search</i></router-link></li>
+        <li><router-link to="/rooms/search"><i class="medium material-icons">search</i></router-link></li>
         <li><router-link to="/rooms/create"><i class="medium material-icons">music_video</i></router-link></li>
         <li><router-link to="/message"><i class="medium material-icons">mail_outline</i></router-link></li>
         <li><router-link to="/mypage/index"><i class="medium material-icons">person_outline</i></router-link></li>
@@ -125,11 +125,6 @@ export default {
                 time: '',
                 comment: '',
             }
-        }
-    },
-    computed: {
-        userId(){
-            return this.$store.getters['auth/currentUser'].id;
         }
     },
     methods: {
