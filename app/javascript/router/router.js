@@ -12,6 +12,7 @@ import RoomsEdit from '../Pages/RoomsEdit.vue';
 import RoomsSearch from '../Pages/RoomsSearch.vue';
 import SearchShow from '../Pages/SearchShow.vue';
 import MessageIndex from '../Pages/MessageIndex.vue';
+import MessageShow from '../Pages/MessageShow.vue';
 import MatchIndex from '../Pages/MatchIndex.vue';
 import MatchShow from '../Pages/MatchShow.vue';
 import FollowerIndex from '../Pages/FollowerIndex.vue';
@@ -29,6 +30,7 @@ const router  = new Router({
       { path: '/mypage/index',component: MypageHome},
       { path: '/mypage/edit',component: MypageEdit},
       { path: '/message/index',component: MessageIndex},
+      { path: '/message/show/:id',component: MessageShow},
       { path: '/match/index',component: MatchIndex},
       { path: '/match/show/:id',component: MatchShow},
       { path: '/follower/index',component: FollowerIndex},
