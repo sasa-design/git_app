@@ -7,6 +7,17 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def followers
+    user = User.find(current_user.id)
+    users = user.follows
+    render json:  users, each_serializer: UserSerializer
+  end
+
+  def matchers
+    user = User.find(current_user.id)
+    users = user.matchers
+    render json: users, each_serializer: UserSerializer
+  end
   private
 
   def user_params

@@ -15,17 +15,26 @@
     <div class="container">
         <div class="row"></div>
         <div class="row">
-            <router-link :to="{path: `/message/index/${id}`}" class="waves-effect waves-light btn right">
+            <router-link to= "/message/index" class="waves-effect waves-light btn right">
                 <i class="medium material-icons">email</i>メッセージ
             </router-link>
-            <router-link :to="{path: `/match/index/${id}`}" class="waves-effect waves-light btn pulse left">
+            <router-link to= "/match/index" class="waves-effect waves-light btn pulse left">
                 <i class="medium material-icons">perm_contact_calendar</i>マッチング
             </router-link>
             <div class="center">
-                <router-link :to="{path: `/follower/index/${id}`}" class="waves-effect waves-light btn">
+                <router-link to="/follower/index" class="waves-effect waves-light btn">
                     <i class="medium material-icons">lightbulb_outline</i>相手から
                 </router-link>
             </div>
+        </div>
+        <div class="row" v-for="matcher in matchers">
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <img src="#" class="circle">
+                    <span class="title">{{matcher.name}}</span>
+                    <router-link :to="{path: `/match/show/${matcher.id}`}" class="secondary-content"><i class="material-icons">location_on</i></router-link>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -35,17 +44,16 @@ import axios from 'axios'
 export default {
     data: function(){
         return {
-            id: this.$route.params.id,
-            matches: [],
+            matchers: [],
         }
     },
-    created: function(){
-        this.fetchMatches
+    created(){
+        this.fetchMatchers();
     },
     methods: {
-        fetchMatches(){
-            axios.get(`/api/relationship`).then(res => {
-                this.matches = res.data;
+        fetchMatchers(){
+            axios.get('/api/users/matchers').then(res => {
+                this.matchers = res.data;
             });
         }
     }

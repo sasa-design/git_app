@@ -15,14 +15,14 @@
     <div class="container">
         <div class="row"></div>
         <div class="row">
-            <router-link :to="{path: `/message/index/${id}`}" class="waves-effect waves-light btn pulse right">
+            <router-link to= "/message/index" class="waves-effect waves-light btn pulse right">
                 <i class="medium material-icons">email</i>メッセージ
             </router-link>
-            <router-link :to="{path: `/match/index/${id}`}" class="waves-effect waves-light btn left">
+            <router-link to= "/match/index" class="waves-effect waves-light btn left">
                 <i class="medium material-icons">perm_contact_calendar</i>マッチング
             </router-link>
             <div class="center">
-                <router-link :to="{path: `/follower/index/${id}`}" class="waves-effect waves-light btn">
+                <router-link to= "/follower/index" class="waves-effect waves-light btn">
                     <i class="medium material-icons">lightbulb_outline</i>相手から
                 </router-link>
             </div>

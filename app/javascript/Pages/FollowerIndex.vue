@@ -2,7 +2,7 @@
 <div>
     <nav>
         <div class="nav-wrapper">
-            <router-link to="/" class="brand-logo">マッチング一覧</router-link>
+            <router-link to="/" class="brand-logo">相手からのいいね</router-link>
             <ul class="right hide-on-med-and-down">
                 <li><router-link to="/rooms/search"><i class="medium material-icons">search</i></router-link></li>
                 <li><router-link to="/rooms/create"><i class="medium material-icons">music_video</i></router-link></li>
@@ -15,17 +15,26 @@
     <div class="container">
         <div class="row"></div>
         <div class="row">
-            <router-link :to="{path: `/message/index/${id}`}" class="waves-effect waves-light btn right">
+            <router-link to= "/message/index" class="waves-effect waves-light btn right">
                 <i class="medium material-icons">email</i>メッセージ
             </router-link>
-            <router-link :to="{path: `/match/index/${id}`}" class="waves-effect waves-light btn left">
+            <router-link to= "/match/index" class="waves-effect waves-light btn left">
                 <i class="medium material-icons">perm_contact_calendar</i>マッチング
             </router-link>
             <div class="center">
-                <router-link :to="{path: `/follower/index/${id}`}" class="waves-effect waves-light btn pulse">
+                <router-link to= "/follower/index" class="waves-effect waves-light btn pulse">
                     <i class="medium material-icons">lightbulb_outline</i>相手から
                 </router-link>
             </div>
+        </div>
+        <div class="row" v-for="follower in followers">
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <img src="#" class="circle">
+                    <span class="title">{{follower.name}}</span>
+                    <router-link :to="{path: `/follower/show/${follower.id}`}" class="secondary-content"><i class="material-icons">location_on</i></router-link>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -40,11 +49,11 @@ export default {
         }
     },
     created: function(){
-        this.fetchFollowers
+        this.fetchFollowers();
     },
     methods: {
         fetchFollowers(){
-            axios.get('/api/relationship').then(res => {
+            axios.get('/api/users/followers').then(res => {
                 this.followers = res.data;
             });
         }

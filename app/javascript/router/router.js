@@ -13,8 +13,9 @@ import RoomsSearch from '../Pages/RoomsSearch.vue';
 import SearchShow from '../Pages/SearchShow.vue';
 import MessageIndex from '../Pages/MessageIndex.vue';
 import MatchIndex from '../Pages/MatchIndex.vue';
+import MatchShow from '../Pages/MatchShow.vue';
 import FollowerIndex from '../Pages/FollowerIndex.vue';
-
+import FollowerShow from '../Pages/FollowerShow.vue';
 const router  = new Router({
     routes: [
       { path: '/',component: Home},
@@ -27,9 +28,11 @@ const router  = new Router({
       { path: '/edit/:id',component: RoomsEdit},
       { path: '/mypage/index',component: MypageHome},
       { path: '/mypage/edit',component: MypageEdit},
-      { path: '/message/index/:id',component: MessageIndex},
-      { path: '/match/index/:id',component: MatchIndex},
-      { path: '/follower/index/:id',component: FollowerIndex},
+      { path: '/message/index',component: MessageIndex},
+      { path: '/match/index',component: MatchIndex},
+      { path: '/match/show/:id',component: MatchShow},
+      { path: '/follower/index',component: FollowerIndex},
+      { path: '/follower/show/:id',component: FollowerShow}
     ],
 });
 export default router;

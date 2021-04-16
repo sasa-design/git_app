@@ -1,9 +1,11 @@
 class Api::RelationshipController < ApplicationController
     
     def index
+        
     end
 
     def show
+
     end
 
     def create
