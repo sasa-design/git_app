@@ -14,6 +14,6 @@ class Api::MessagesController < ApplicationController
 
     def message_params
         params.require(:message).permit(:content,:receiver_id)
-        .merge(sender_id: current_user.id)
+        .merge(sender_id: current_user.id,user_id: current_user.id)
     end
 end
