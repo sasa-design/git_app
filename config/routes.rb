@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:create, :destroy]
     resources :search, only: [:index]
     resources :relationship, only: [:index, :show, :create]
-    resources :messages, only: [:index,:create]
+    resources :messages, only: [:show,:create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
