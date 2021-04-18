@@ -29,6 +29,8 @@ gem 'foreman'
 gem 'ransack'
 gem 'mini_magick'
 gem 'pry-rails'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
