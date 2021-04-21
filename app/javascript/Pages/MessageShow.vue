@@ -68,10 +68,6 @@ export default {
 }
 </script>
 <style>
-.collection{    
-    min-width: 30%;
-    max-width: 60%;
-}
 p{
     font-size: 1.5em;
 }

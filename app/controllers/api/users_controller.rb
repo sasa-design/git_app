@@ -1,10 +1,11 @@
 class Api::UsersController < ApplicationController
-
+  def show
+    user = User.find(params[:id])
+    render json: user, serializer: UserSerializer
+  end
   def create
-    user = User.new(user_params)
-    if user.save
-      render json: user,serializer: UserSerializer
-    end
+    user = User.create(user_params)
+    render json: user,serializer: UserSerializer
   end
 
   def followers

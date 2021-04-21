@@ -8,8 +8,8 @@ Rails.application.routes.draw do
         get :followers  ,:matchers
       end
     end
-    resources :mypage, only: [:index, :show,:update]
-    resources :sessions, only: [:create, :destroy]
+    resources :mypage, only: [:index,:show,:update]
+    resources :sessions, only: [:create]
     resources :search, only: [:index]
     resources :relationship, only: [:index, :show, :create]
     resources :messages, only: [:show,:create]

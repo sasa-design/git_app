@@ -31,6 +31,7 @@
 </div>
 </template>
 <script>
+
 export default {
   name: 'Signin',
   data(){
@@ -53,7 +54,7 @@ export default {
       })
       .catch(error => {
         alert(error.response.data.error.messages);
-      }); 
+      });
     },
   },
 }

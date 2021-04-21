@@ -24,11 +24,29 @@
     text-align: center;
 }
 /* input */
+.input-background{
+    height: 500px;
+    position: relative;
+}
+.input-zone{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+}
 .collection-item{
     color:grey;
 }
 .right-align{
     float: right;
+}
+.detail-field{
+    height: auto;
+    position: relative;
+}
+.detail{
+    height: 100%;
+    width: 70%;
+    margin: auto;
 }
 select {
     border-top: none;

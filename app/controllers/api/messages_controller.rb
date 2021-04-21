@@ -8,6 +8,7 @@ class Api::MessagesController < ApplicationController
 
     def create
         message = Message.create(message_params)
+        render json: message, serializer: MessageSerializer
     end
 
     private

@@ -12,9 +12,8 @@ class Api::RoomsController < ApplicationController
 
     def create
         room = Room.new(room_params)
-        room.user_id = current_user.id
         if room.save
-            head :no_content
+            render json: room, serializer: RoomSerializer
         else
             render json: room.errors, status: :unprocessable_entity
         end
@@ -32,7 +31,7 @@ class Api::RoomsController < ApplicationController
     def destroy
         room = Room.find(params[:id])
         if room.destroy
-            head :no_content
+            render json: room, serializer: RoomSerializer
         else
             render json: room.errors, status: :unprocessable_entity
         end
