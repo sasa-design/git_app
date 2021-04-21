@@ -14,11 +14,8 @@
   </nav>
   <div class="card">
     <div class="card-image">
-        <img src="#">
+        <img src="">
         <span class="card-title">
-            <router-link to="/mypage/edit" class="btn-floating pulse">
-                <i class="material-icons">add</i>
-            </router-link>
         </span>
     </div>
     <div class="card-content">

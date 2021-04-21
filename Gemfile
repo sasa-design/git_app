@@ -1,5 +1,4 @@
-  source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+source 'https://rubygems.org'
 
 ruby '2.6.5'
 
@@ -27,11 +26,11 @@ gem 'foreman'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'ransack'
-gem 'mini_magick'
 gem 'pry-rails'
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
