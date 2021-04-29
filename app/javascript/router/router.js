@@ -28,7 +28,7 @@ const router  = new Router({
       { path: '/search/show/:id',component: SearchShow},
       { path: '/edit/:id',component: RoomsEdit},
       { path: '/mypage/index',component: MypageHome},
-      { path: '/mypage/edit',component: MypageEdit},
+      { path: '/mypage/edit/:id',component: MypageEdit},
       { path: '/message/index',component: MessageIndex},
       { path: '/message/show/:id',component: MessageShow},
       { path: '/match/index',component: MatchIndex},

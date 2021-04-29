@@ -8,18 +8,32 @@
             </div>
         </div>
     </nav>
-    <div class="card">
-        <div class="card-image">
-            <img src="#">
-            <span class="card-title">
-                <router-link to="/mypage/edit" class="btn-floating pulse">
-                    <i class="material-icons">add</i>
-                </router-link>
-            </span>
+    <div class="container">
+        <div class="row">
+            <div class="col s6 center-align">
+                <div class="eyecatch">
+                    <img class="eyecatch-size" v-bind:src="uploadedImage">
+                </div>
+            </div>
+            <div class="col s6 center-align">
+                <form v-on:submit.prevent="avatarUpload(id)">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" v-on:change="setImage()">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" v-on:change="setImage()">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn waves-effect waves-light" type="submit">アバター変更
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="card-content">
-        <p>profile.name・profile.age・profile.sex</p>
     </div>
     <div class="container">
         <form class="col">
@@ -158,7 +172,7 @@
                 </div>
             </div>
             <div class="row">
-                <button class="waves-effect waves-light btn-large right" v-on:click="updateProfile">編集完了</button>
+                <button class="waves-effect waves-light btn-large right" v-on:click="updateProfile(profile.id)">編集完了</button>
             </div>
         </form>
     </div>
@@ -170,7 +184,9 @@ export default {
     name: 'MypageEdit',
     data: function(){
         return {
+            id: this.$route.params.id,
             profile: {
+                id: '',
                 age: '',
                 sex: '',
                 living: '',
@@ -181,43 +197,74 @@ export default {
                 smoke: '',
                 drink: '',
                 detail: ''
-            }
+            },
+            uploadedImage: '',
+            imageFile: {},
         }
     },  
-    computed: {
-        userId(){
-            return this.$store.getters['auth/currentUser'].id;
-        },
-    },
-
     created: function() {
-        this.setprofileEdit();
+        this.setprofileEdit(this.id);
+        this.setuserImage(this.id);
     },
     methods: {
-        async setprofileEdit(){
-            const res = await axios.get(`/api/mypage/${this.userId}`);  
+        setImage(){
+            let file = event.target.files[0]
+            let reader = new FileReader()
+            reader.onload = () => {
+                this.uploadedImage = event.target.result
+                this.imageFile.image = this.uploadedImage
+            }
+            reader.readAsDataURL(file)
+        },
+        async setprofileEdit(id){
+            const res = await axios.get(`/api/mypage/${id}`);  
+            this.profile.id = res.data.id;
             this.profile.area = res.data.area;
             this.profile.sex = res.data.sex;
             this.profile.living = res.data.living;
             this.profile.height = res.data.height;
             this.profile.look = res.data.look;
-            this.profile.type = res.data.type;
+            this.profile.type = res.data.type;  
             this.profile.holiday = res.data.holiday;
             this.profile.smoke = res.data.smoke;
             this.profile.drink = res.data.drink;
             this.profile.detail = res.data.detail;
         },
-        async updateProfile(){
-            await axios.put(`/api/mypage/${this.userId}`,{ profile: this.profile})
+        async setuserImage(id){
+            const res = await axios.get(`/api/users/${id}`);
+            this.uploadedImage = res.data.image;
+        },
+        async updateProfile(id){
+            await axios.put(`/api/mypage/${id}`,{ profile: this.profile})
             .then(res =>{
+                this.profile = res.data;
                 alert('変更が完了しました')
                 this.$router.replace({path: '/mypage/index'})
             })
             .catch(error =>{
-                alert("変更に失敗しました");
+                alert('変更に失敗しました');
                 console.log(error);
             });
         },
+        async avatarUpload(id){
+            await axios.put(`/api/users/${id}`,{imageFile: this.imageFile })
+            .then(res => {
+                alert('変更しました');
+                this.imageFile = {},
+                this.uploadedImage = res.data;
+            })
+            .catch(error => {
+                alert('変更に失敗しました');
+                console.log(error);
+                this.$router.reload;
+            });
+        }
     }
 }
 </script>
+<style>
+.eyecatch-size{
+    width: 200px;
+    height: 200px;
+}
+</style>

@@ -14,12 +14,10 @@
   </nav>
   <div class="card">
     <div class="card-image">
-        <img src="">
-        <span class="card-title">
-        </span>
+      <img src="">
     </div>
     <div class="card-content">
-        <p>{{profileInfo.user.name}}・{{profileInfo.age}}</p>
+      <p>{{profileInfo.user.name}}・{{profileInfo.age}}</p>
     </div>
   </div>
   <div class="container">
@@ -28,7 +26,7 @@
         <li class="collection-header">
           <h4 class="center">プロフィール
             <span>
-              <router-link to="/mypage/edit" class="btn-floating pulse">
+              <router-link :to="{path: `/mypage/edit/${profileInfo.user.id}`}" class="btn-floating pulse">
                 <i class="material-icons">add</i>
               </router-link>
             </span>
@@ -65,14 +63,13 @@ export default {
       profileInfo:{},
     }
   },
-  mounted() {
+  created() {
     this.fetchProfile();
   },
 
   methods: {
     async fetchProfile(){
-      await axios.get('/api/mypage')
-      .then(res =>{
+      await axios.get('/api/mypage').then(res =>{
         this.profileInfo = res.data;
       });
     },

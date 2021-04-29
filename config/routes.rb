@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :rooms, only: [:index, :create,:show, :update, :destroy] 
-    resources :users, only: [:show, :create] do
+    resources :users, only: [:show, :create, :update] do
       collection do
-        get :followers  ,:matchers
+        get :followers  ,:matchers 
       end
     end
     resources :mypage, only: [:index,:show,:update]

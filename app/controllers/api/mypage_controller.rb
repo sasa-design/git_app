@@ -1,8 +1,7 @@
 class Api::MypageController < ApplicationController
-  
   def index
     profile = Profile.find_or_create_by(user_id: current_user.id)
-    render json: profile, serializer: ProfileSerializer
+    render json: profile, serializer: ProfileSerializer   
   end
 
   def show
