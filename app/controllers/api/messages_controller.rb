@@ -1,4 +1,7 @@
 class Api::MessagesController < ApplicationController
+    def index
+        
+    end
 
     def show
         messages = Message.where(sender_id: current_user.id,receiver_id: params[:id])

@@ -13,7 +13,7 @@ const mutations = {
   SET_CURRENT_USER: (state, user) => {
     state.currentUser =  user;
     localStorage.setItem('currentUser', JSON.stringify(user));
-    axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${user.user.token}`;
   },
   CLEAR_CURRENT_USER: () => {
     state.currentUser = null;
@@ -25,7 +25,7 @@ const mutations = {
 const actions = {
   async login({ commit }, sessionParams) {
     const res = await axios.post('/api/sessions', sessionParams);
-    commit('SET_CURRENT_USER', res.data.user);
+    commit('SET_CURRENT_USER', res.data);
   },
   logout({ commit }) {
     commit('CLEAR_CURRENT_USER');

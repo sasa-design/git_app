@@ -11,9 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col s6 center-align">
-                <div class="eyecatch">
-                    <img class="eyecatch-size" v-bind:src="uploadedImage">
-                </div>
+                <Avatar :id="id" />
             </div>
             <div class="col s6 center-align">
                 <form v-on:submit.prevent="avatarUpload(id)">
@@ -180,8 +178,11 @@
 </template>
 <script>
 import axios from 'axios'
+import Avatar from '../Component/Avatar.vue'
 export default {
-    name: 'MypageEdit',
+    components: {
+        Avatar  
+    },
     data: function(){
         return {
             id: this.$route.params.id,
@@ -204,7 +205,6 @@ export default {
     },  
     created: function() {
         this.setprofileEdit(this.id);
-        this.setuserImage(this.id);
     },
     methods: {
         setImage(){
@@ -229,10 +229,6 @@ export default {
             this.profile.smoke = res.data.smoke;
             this.profile.drink = res.data.drink;
             this.profile.detail = res.data.detail;
-        },
-        async setuserImage(id){
-            const res = await axios.get(`/api/users/${id}`);
-            this.uploadedImage = res.data.image;
         },
         async updateProfile(id){
             await axios.put(`/api/mypage/${id}`,{ profile: this.profile})

@@ -1,17 +1,6 @@
 <template>
 <div>
-<nav>
-    <div class="nav-wrapper">
-        <router-link to="/" class="brand-logo">ルーム検索</router-link>
-        <ul class="right hide-on-med-and-down">
-            <li><router-link to="/rooms/search"><i class="medium material-icons">search</i></router-link></li>
-            <li><router-link to="/rooms/create"><i class="medium material-icons">music_video</i></router-link></li>
-            <li><router-link to="/message"><i class="medium material-icons">mail_outline</i></router-link></li>
-            <li><router-link to="/mypage/index"><i class="medium material-icons">person_outline</i></router-link></li>
-            <li><router-link to="/">Top</router-link></li>
-        </ul>
-    </div>
-</nav>
+    <Header logo="ルーム検索" />
     <div class="container">
     <form class="col">
         <div class="row">
@@ -129,7 +118,11 @@
 <script>
 import axios from 'axios'
 import qs from 'qs'
+import Header from '../Component/Header.vue'
 export default {
+    components: {
+        Header
+    },
     data: function(){
         return{
             query: {

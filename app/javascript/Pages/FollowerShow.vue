@@ -12,19 +12,19 @@
     </div>
     <div class="row">
         <div class="center-align">
-            <button class="waves-effect waves-light btn-large" v-on:click="likeUser">
+            <button class="waves-effect waves-light btn-large" v-on:click="likeUser()">
                 <i class="material-icons right">favorite</i>いいね
             </button>
         </div>
     </div>
     <div class="container">
-        <div class="card">
-            <div class="card-image">
-                <img src="#">
-            </div>
+        <div class="center">
+            <Avatar :id="this.id" />
         </div>
-        <div class="card-content">
-            <p>{{profileInfo.user.name}}・{{profileInfo.age}}</p>
+        <div class="row">
+            <div class="col s12 center-align">
+                <p>{{profileInfo.user.name}}</p>
+            </div>
         </div>
         <div class="row">
             <ul class="collection with-header">
@@ -55,7 +55,11 @@
 </template>
 <script>
 import axios from 'axios'
+import Avatar from '../Component/Avatar.vue'
 export default {
+    components: {
+        Avatar
+    },
     data: function(){
         return {
             id: this.$route.params.id,

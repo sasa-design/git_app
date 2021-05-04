@@ -13,12 +13,11 @@
             <div class="col s5 m5" v-for="room in rooms">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <span class="card-title" v-on:click="setRoomInfo(room.id)"><button class="waves-effect waves-light btn">編集をしにいく</button></span>
                         <p>場所: {{room.area}}</p>
                         <p>日付: {{room.date}}</p>
                     </div>
-                    <div class="card-action" v-show="roomInfoBool">
-                        <router-link :to="{ path: `/edit/${roomInfo.id}` }" class="waves-effect waves-light btn">編集する</router-link>
+                    <div class="card-action">
+                        <router-link :to="{ path: `/edit/${room.id}` }" class="waves-effect waves-light btn">編集する</router-link>
                         <button class="right waves-effect waves-light btn" v-on:click="deleteRoom(room.id)">削除する</button>
                     </div>
                 </div>
@@ -49,12 +48,6 @@ export default {
             .catch(error => {
                 alert("表示できません");
                 console.log(error);
-            });
-        },
-        setRoomInfo(id){
-            axios.get(`/api/rooms/${id}`).then(res => {
-                this.roomInfo = res.data;
-                this.roomInfoBool = true;
             });
         },
         deleteRoom(id){

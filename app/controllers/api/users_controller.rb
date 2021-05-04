@@ -1,14 +1,14 @@
 class Api::UsersController < ApplicationController
   def show
     user = User.find(params[:id])
-    render json: user,serializer: UserSerializer
+    render json: user,serializer: ImageSerializer
   end
 
   def update
     user = User.find(params[:id])
     if user.update(image_params)
       user.decode64(image_params[:image])
-      render json: user ,serializer: UserSerializer
+      render json: user ,serializer: ImageSerializer
     else 
       render json: user.errors,status: :unprocessable_entity
     end
@@ -16,19 +16,23 @@ class Api::UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    render json: user,serializer: UserSerializer
+    if user.save
+      render head :no_content
+    else
+      render json: user.errors,status: :unprocessable_entity
+    end
   end
 
   def followers
     user = User.find(current_user.id)
     users = user.follows
-    render json:  users, each_serializer: UserSerializer
+    render json: users, each_serializer: ImageSerializer
   end
 
   def matchers
     user = User.find(current_user.id)
     users = user.matchers
-    render json: users, each_serializer: UserSerializer
+    render json: users, each_serializer: ImageSerializer
   end
     
   private

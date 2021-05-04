@@ -5,15 +5,17 @@ class Api::RelationshipController < ApplicationController
     end
 
     def show
-
+        relationship = Relationship.find_by(follow_id: current_user.id,follower_id: params[:id])
+        render json: relationship ,serializer: RelationshipSerializer
     end
 
     def create
         relationship = Relationship.find_or_initialize_by(follow_id: current_user.id,follower_id: params[:follower])
-        if relationship.save
+        unless params[:follow_id] = params[:follower_id]
+            relationship.save
             head :no_content
         else
-            render json: relationship.error
+            render json: relationship.errors, status: :unprocessable_entity
         end
     end
 

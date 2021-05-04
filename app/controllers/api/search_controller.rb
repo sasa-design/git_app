@@ -1,6 +1,6 @@
 class Api::SearchController < ApplicationController
     def index
-        rooms = Room.ransack(search_params)where.not(user_id: current_user.id).result
+        rooms = Room.ransack(search_params).result
         render json: rooms, each_serializer: RoomSerializer
     end
 

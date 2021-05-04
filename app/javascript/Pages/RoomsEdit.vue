@@ -132,21 +132,7 @@ export default {
             },
         }
     },
-    mounted: function() {
-        this.setroomEdit(this.id);
-    },
     methods: {
-        setroomEdit(id){
-            axios.get(`/api/rooms/${id}`).then(res => {
-                this.room.id = res.data.id;
-                this.room.area = res.data.area;
-                this.room.genre = res.data.genre;
-                this.room.artist = res.data.artist;
-                this.room.date = res.data.date;
-                this.room.time = res.data.time;
-                this.room.comment = res.data.comment;
-            });
-        },
         updateRoom(id) {
             axios.put(`/api/rooms/${id}`, { room: this.room }).then(res => {
                alert("変更が完了しました");

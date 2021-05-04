@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="center-align">
-            <button class="waves-effect waves-light btn-large" v-on:click="likeRoom">
+            <button class="waves-effect waves-light btn-large" v-on:click="likeRoom()">
                 <i class="material-icons right">favorite</i>いいね
             </button>
         </div>
@@ -94,7 +94,6 @@ export default {
     created: function(){
         this.fetchRoom(this.id);
     },
-
     methods: {
         fetchRoom(id){
             axios.get(`/api/rooms/${id}`).then(res => {
@@ -113,9 +112,9 @@ export default {
                 alert('いいね完了')
             })
             .catch(error => {
-                alert('すでにいいね済みです')
+                alert('自分にいいねはできません')
             });
-        }
+        },
     }
     
 }
