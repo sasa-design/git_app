@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget \
     && apt-get update && apt-get install -y yarn
 
 RUN apt-get install -y nodejs \
-    && apt-get install -y vim \
-    && apt-get install -y imagemagick
+    && apt-get install -y vim 
 WORKDIR /rails_vue_app
 COPY Gemfile /rails_vue_app/Gemfile
 COPY Gemfile.lock /rails_vue_app/Gemfile.lock
+RUN bundle install
 
 COPY . /rails_vue_app
 COPY package.json .

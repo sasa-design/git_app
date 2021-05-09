@@ -1,2 +1,2 @@
-web: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+web: bundle exec unicorn -p 3000 -E production -c /rails_vue_app/config/unicorn.conf.rb
 webpacker: ./bin/webpack-dev-server --port 3035 --host 0.0.0.0
