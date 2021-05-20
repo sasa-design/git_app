@@ -1,5 +1,5 @@
 class Api::RoomsController < ApplicationController
-
+    before_action :authenticate, only: [:create,:update,:destroy]
     def index
         rooms = Room.where(user_id: current_user.id)
         render json: rooms, each_serializer: RoomSerializer
@@ -21,11 +21,8 @@ class Api::RoomsController < ApplicationController
 
     def update
         room = Room.find(params[:id])
-        if room.update(room_params)
-            render json: room, serializer: RoomSerializer
-        else
-            render json: room.errors,status: :unprocessable_entity
-        end
+        room.update(room_params)
+        render json: room, serializer: RoomSerializer
     end
 
     def destroy

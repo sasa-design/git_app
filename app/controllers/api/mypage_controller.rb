@@ -1,4 +1,5 @@
 class Api::MypageController < ApplicationController
+  before_action :authenticate, only: [:update]
   def index
     profile = Profile.find_or_create_by(user_id: current_user.id)
     render json: profile, serializer: ProfileSerializer   
@@ -19,7 +20,7 @@ class Api::MypageController < ApplicationController
 
   def profile_params
     params.fetch(:profile,{}).permit(
-      :area, :age,:sex, :living, :height, :look, :type, :holiday, :smoke, :drink, :detail
+      :area, :age,:sex, :living, :height, :look, :belongs, :holiday, :smoke, :drink, :detail
     ).merge(
       user_id: current_user.id
     )

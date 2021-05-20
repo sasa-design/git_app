@@ -9,7 +9,7 @@
         <li class="collection-item">居住地:<span class="right-align">{{profileInfo.living}}</span></li>
         <li class="collection-item">身長:<span class="right-align">{{profileInfo.height}}</span></li>
         <li class="collection-item">体型:<span class="right-align">{{profileInfo.look}}</span></li>
-        <li class="collection-item">属性:<span class="right-align">{{profileInfo.type}}</span></li>
+        <li class="collection-item">属性:<span class="right-align">{{profileInfo.belongs}}</span></li>
         <li class="collection-item">休日:<span class="right-align">{{profileInfo.holiday}}</span></li>
         <li class="collection-item">煙草:<span class="right-align">{{profileInfo.smoke}}</span></li>
         <li class="collection-item">お酒:<span class="right-align">{{profileInfo.drink}}</span></li>

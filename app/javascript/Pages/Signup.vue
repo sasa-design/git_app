@@ -7,11 +7,15 @@
       <router-link to="/" class="brand-logo">WithOK</router-link>
     </li>
   </ul>
+  <ul class="right hide-on-med-and-down">
+    <li><router-link to="/signin" class="sign-icon">ログイン</router-link></li>
+    <li><router-link to="/" class="sign-icon">Top</router-link></li>
+  </ul>
 </div>
 </nav>
 <div class="home-main">
     <div class="field">
-      <form class="col">
+      <form class="col" @submit.prevent="signup()">
         <div class="text-red" v-if="error">{{ error }}</div>
           <div class="input-field">
             <label for="name">name</label>
@@ -48,15 +52,10 @@ import router from'../router/router.js';
       }
     },
     methods: {
-      async signup() {
-        await axios.post('/api/users', {user:{ name: this.name, email: this.email, password: this.password }})
-        .then(response =>{
-          alert='登録が完了しました'
-          this.$router.replace('/login');
-        })
-        .catch(error => {
-          alert(err.response.data.error.messages);
-        });
+      signup() {
+        axios.post('/api/users', {user:{ name: this.name, email: this.email, password: this.password }});
+        alert('登録が完了しました');
+        this.$router.reload('/signin');
       },
     }
   }

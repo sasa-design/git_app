@@ -21,7 +21,7 @@
                 <li class="collection-item avatar">
                     <img v-bind:src="matcher.image" class="circle">
                     <span class="title">{{matcher.name}}</span>
-                    <router-link :to="{path: `/match/show/${matcher.id}`}" class="secondary-content"><i class="material-icons">location_on</i></router-link>
+                    <router-link :to="{path: `/match/show/${matcher.id}`}" class="secondary-content btn-floating btn-large pulse"><i class="material-icons">face</i></router-link>
                 </li>
             </ul>
         </div>

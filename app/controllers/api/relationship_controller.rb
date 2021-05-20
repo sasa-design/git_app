@@ -1,5 +1,5 @@
 class Api::RelationshipController < ApplicationController
-    
+    before_action :authenticate, only: [:create]
     def index
         
     end

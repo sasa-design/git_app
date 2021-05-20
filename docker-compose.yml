@@ -2,7 +2,7 @@ version: '3'
 services:
   #db:
   #  image: mysql:8.0
-  # environment:
+  #  environment:
   #    MYSQL_ROOT_PASSWORD: 'pass'
   #    MYSQL_USER: 'root'
   #  ports:
@@ -23,7 +23,7 @@ services:
       - "3000:3000"
       - "3035:3035"
   #  depends_on:
-  #   - db
+  #    - db
     tty: true
     stdin_open: true
   nginx:

@@ -48,9 +48,12 @@
         </div>
     </div>
     <div class="container" v-show="profileInfoBool">
-        <div class="card">
-            <div class="card-image">
-                <img src="#">
+        <div class="center">
+            <Avatar :id="this.roomInfo.user.id" />
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <p>{{roomInfo.user.name}}</p>
             </div>
         </div>
         <div class="row">
@@ -63,7 +66,7 @@
                 <li class="collection-item">居住地:<span class="right-align">{{profileInfo.living}}</span></li>
                 <li class="collection-item">身長:<span class="right-align">{{profileInfo.height}}</span></li>
                 <li class="collection-item">体型:<span class="right-align">{{profileInfo.look}}</span></li>
-                <li class="collection-item">属性:<span class="right-align">{{profileInfo.type}}</span></li>
+                <li class="collection-item">属性:<span class="right-align">{{profileInfo.belongs}}</span></li>
                 <li class="collection-item">休日:<span class="right-align">{{profileInfo.holiday}}</span></li>
                 <li class="collection-item">煙草:<span class="right-align">{{profileInfo.smoke}}</span></li>
                 <li class="collection-item">お酒:<span class="right-align">{{profileInfo.drink}}</span></li>
@@ -82,7 +85,11 @@
 </template>
 <script>
 import axios from 'axios'
+import Avatar from '../Component/Avatar.vue'
 export default {
+    components: {
+        Avatar
+    },
     data: function(){
         return {
             id: this.$route.params.id,

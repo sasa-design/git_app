@@ -51,8 +51,8 @@
                 <div class="input-field col s12"> 
                     <select style="display:block" v-model="profile.sex">
                         <option value="" disabled selected>性別・選択してください</option>
-                        <option value="1">男性</option>
-                        <option value="2">女性</option>
+                        <option>男性</option>
+                        <option>女性</option>
                     </select>
                 </div>
             </div>
@@ -60,53 +60,53 @@
                 <div class="input-field col s12">
                     <select style="display:block" v-model="profile.living">
                         <option value="" disabled selected>居住地・選択してください</option>
-                        <option value="1">北海道</option>
-                        <option value="2">青森県</option>
-                        <option value="3">岩手県</option>
-                        <option value="4">宮城県</option>
-                        <option value="5">秋田県</option>
-                        <option value="6">山形県</option>
-                        <option value="7">福島県</option>
-                        <option value="8">茨城県</option>
-                        <option value="9">栃木県</option>
-                        <option value="10">群馬県</option>
-                        <option value="11">埼玉県</option>
-                        <option value="12">千葉県</option>
-                        <option value="13">東京都</option>
-                        <option value="14">神奈川県</option>
-                        <option value="15">新潟県</option>
-                        <option value="16">富山県</option>
-                        <option value="17">石川県</option>
-                        <option value="18">福井県</option>
-                        <option value="19">山梨県</option>
-                        <option value="20">長野県</option>
-                        <option value="21">岐阜県</option>
-                        <option value="22">静岡県</option>
-                        <option value="23">愛知県</option>
-                        <option value="24">三重県</option>
-                        <option value="25">滋賀県</option>
-                        <option value="26">京都府</option>
-                        <option value="27">大阪府</option>
-                        <option value="28">兵庫県</option>
-                        <option value="29">奈良県</option>
-                        <option value="30">和歌山県</option>
-                        <option value="31">鳥取県</option>
-                        <option value="32">島根県</option>
-                        <option value="33">岡山県</option>
-                        <option value="34">広島県</option>
-                        <option value="35">山口県</option>
-                        <option value="36">徳島県</option>
-                        <option value="37">香川県</option>
-                        <option value="38">愛媛県</option>
-                        <option value="39">高知県</option>
-                        <option value="40">福岡県</option>
-                        <option value="41">佐賀県</option>
-                        <option value="42">長崎県</option>
-                        <option value="43">熊本県</option>
-                        <option value="44">大分県</option>
-                        <option value="45">宮崎県</option>
-                        <option value="46">鹿児島県</option>
-                        <option value="47">沖縄県</option>
+                        <option>北海道</option>
+                        <option>青森県</option>
+                        <option>岩手県</option>
+                        <option>宮城県</option>
+                        <option>秋田県</option>
+                        <option>山形県</option>
+                        <option>福島県</option>
+                        <option>茨城県</option>
+                        <option>栃木県</option>
+                        <option>群馬県</option>
+                        <option>埼玉県</option>
+                        <option>千葉県</option>
+                        <option>東京都</option>
+                        <option>神奈川県</option>
+                        <option>新潟県</option>
+                        <option>富山県</option>
+                        <option>石川県</option>
+                        <option>福井県</option>
+                        <option>山梨県</option>
+                        <option>長野県</option>
+                        <option>岐阜県</option>
+                        <option>静岡県</option>
+                        <option>愛知県</option>
+                        <option>三重県</option>
+                        <option>滋賀県</option>
+                        <option>京都府</option>
+                        <option>大阪府</option>
+                        <option>兵庫県</option>
+                        <option>奈良県</option>
+                        <option>和歌山県</option>
+                        <option>鳥取県</option>
+                        <option>島根県</option>
+                        <option>岡山県</option>
+                        <option>広島県</option>
+                        <option>山口県</option>
+                        <option>徳島県</option>
+                        <option>香川県</option>
+                        <option>愛媛県</option>
+                        <option>高知県</option>
+                        <option>福岡県</option>
+                        <option>佐賀県</option>
+                        <option>長崎県</option>
+                        <option>熊本県</option>
+                        <option>大分県</option>
+                        <option>宮崎県</option>
+                        <option>鹿児島県</option>
+                        <option>沖縄県</option>
                     </select>
                 </div>
             </div>
@@ -114,10 +114,10 @@
                 <div class="input-field col s12">
                     <select style="display:block" v-model="profile.look">
                         <option value="" disabled selected>体型・選択してください</option>
-                        <option value="1">細め</option>
-                        <option value="2">普通</option>
-                        <option value="3">ぽっちゃり</option>
-                        <option value="4">太め</option>
+                        <option>細め</option>
+                        <option>普通</option>
+                        <option>ぽっちゃり</option>
+                        <option>太め</option>
                     </select>
                 </div>
             </div>
@@ -125,20 +125,20 @@
                 <div class="input-field col s12">
                     <select style="display:block" v-model="profile.holiday">
                         <option value="" disabled selected>休日・選択してください</option>
-                        <option value="1">平日</option>
-                        <option value="2">休日</option>
-                        <option value="3">不定休</option>
+                        <option>平日</option>
+                        <option>休日</option>
+                        <option>不定休</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select style="display:block" v-model="profile.type">
+                    <select style="display:block" v-model="profile.belongs">
                         <option value="" disabled selected>属性・選択してください</option>
-                        <option value="1">学生</option>
-                        <option value="2">会社員</option>
-                        <option value="3">フリーター</option>
-                        <option value="4">その他</option>
+                        <option>学生</option>
+                        <option>会社員</option>
+                        <option>フリーター</option>
+                        <option>その他</option>
                     </select>
                 </div>
             </div>
@@ -146,9 +146,9 @@
                 <div class="input-field col s12">
                     <select style="display:block" v-model="profile.smoke">
                         <option value="" disabled selected>煙草・選択してください</option>
-                        <option value="1">吸う</option>
-                        <option value="2">非喫煙者の前では吸わない</option>
-                        <option value="3">吸わない</option>
+                        <option>吸う</option>
+                        <option>非喫煙者の前では吸わない</option>
+                        <option>吸わない</option>
                     </select>
                 </div>
             </div>
@@ -156,10 +156,10 @@
                 <div class="input-field col s12">
                     <select style="display:block" v-model="profile.drink">
                         <option value="" disabled selected>お酒・選択してください</option>
-                        <option value="1">よく飲む</option>
-                        <option value="2">時々飲む</option>
-                        <option value="3">あまり飲まない</option>
-                        <option value="4">飲まない</option>
+                        <option>よく飲む</option>
+                        <option>時々飲む</option>
+                        <option>あまり飲まない</option>
+                        <option>飲まない</option>
                     </select>
                 </div>
             </div>
@@ -193,7 +193,7 @@ export default {
                 living: '',
                 height: '',
                 look: '',
-                type: '',
+                belongs: '',
                 holiday: '',
                 smoke: '',
                 drink: '',
@@ -224,7 +224,7 @@ export default {
             this.profile.living = res.data.living;
             this.profile.height = res.data.height;
             this.profile.look = res.data.look;
-            this.profile.type = res.data.type;  
+            this.profile.type = res.data.belongs;  
             this.profile.holiday = res.data.holiday;
             this.profile.smoke = res.data.smoke;
             this.profile.drink = res.data.drink;
@@ -233,9 +233,7 @@ export default {
         async updateProfile(id){
             await axios.put(`/api/mypage/${id}`,{ profile: this.profile})
             .then(res =>{
-                this.profile = res.data;
-                alert('変更が完了しました')
-                this.$router.replace({path: '/mypage/index'})
+                alert('変更が完了しました');
             })
             .catch(error =>{
                 alert('変更に失敗しました');

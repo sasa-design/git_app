@@ -7,13 +7,6 @@
             <router-link to="/rooms/index" class="breadcrumb">ルーム一覧</router-link>
             <router-link to="/rooms/edit/:id" class="breadcrumb">ルーム編集</router-link>
         </div>
-        <ul class="right hide-on-med-and-down">
-            <li><router-link to="/search"><i class="medium material-icons">search</i></router-link></li>
-            <li><router-link to="/room"><i class="medium material-icons">music_video</i></router-link></li>
-            <li><router-link to="/message"><i class="medium material-icons">mail_outline</i></router-link></li>
-            <li><router-link to="/mypage/index"><i class="medium material-icons">person_outline</i></router-link></li>
-            <li><router-link to="/">Top</router-link></li>
-        </ul>
     </div>
 </nav>
 <div class="container">
@@ -104,11 +97,11 @@
         <div class="row">
             <div class="input-field col s12">
                 <label for="room_comment">詳細を教えて</label>
-                <input id="room_comment" type="text" class="validate">
+                <input id="room_comment" type="text" class="validate" v-model="room.comment">
             </div>
         </div>
         <div class="row">
-            <button class="waves-effect waves-light btn-large" v-on:click="updateRoom(room.id)">編集完了</button>
+            <button class="waves-effect waves-light btn-large" v-on:click="updateRoom(id)">編集完了</button>
         </div>
     </form>
 </div>
@@ -117,12 +110,10 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'RoomEdit',
     data: function() {
         return {
             id: this.$route.params.id,
             room: {
-                id: '',
                 area: '',
                 genre: '',
                 artist: '',
@@ -133,8 +124,9 @@ export default {
         }
     },
     methods: {
-        updateRoom(id) {
-            axios.put(`/api/rooms/${id}`, { room: this.room }).then(res => {
+        updateRoom(id){
+            axios.put(`/api/rooms/${id}`,{ room: this.room })
+            .then(res => {
                alert("変更が完了しました");
             })
             .catch(error => {

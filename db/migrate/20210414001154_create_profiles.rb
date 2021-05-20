@@ -7,7 +7,7 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.string :living
       t.integer :height
       t.string :look
-      t.string :type
+      t.string :belongs
       t.string :holiday
       t.string :smoke
       t.string :drink

@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_074934) do
     t.string "living"
     t.integer "height"
     t.string "look"
-    t.string "type"
+    t.string "belongs"
     t.string "holiday"
     t.string "smoke"
     t.string "drink"

@@ -1,6 +1,8 @@
 class Api::MessagesController < ApplicationController
+    before_action :authenticate, only: [:create]
     def index
-        
+        messages = Message.find_by(sender_id: current_user.id)
+        render json: messages, serializer: MessageSerializer
     end
 
     def show

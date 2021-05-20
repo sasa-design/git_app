@@ -3,17 +3,19 @@
 <nav>
 <div class="nav-wrapper">
   <ul class="hide-on-med-and-down">
-    <li><router-link to="/" class="brand-logo">WithOK</router-link></li>
+    <li>
+      <router-link to="/" class="brand-logo">WithOK</router-link>
+    </li>
   </ul>
   <ul class="right hide-on-med-and-down">
     <li><router-link to="/signup" class="sign-icon">新規登録</router-link></li>
-    <li><router-link to="/mypage" class="sign-icon">ゲストログイン</router-link></li>
+    <li><router-link to="/" class="sign-icon">Top</router-link></li>
   </ul>
 </div>
 </nav>
 <div class="home-main">
   <div class="field">
-  <form class="col" @submit.prevent="signin">
+  <form class="col" @submit.prevent="login">
     <div class="input-field">
       <label for="first_name">email</label>
       <input id="first_name" type="email" class="validate" required="required" v-model="email">
@@ -23,7 +25,7 @@
       <input id="first_name" type="password" class="validate" required="required" v-model="password">
     </div>
     <div>
-      <button class="waves-effect waves-light btn-large" v-on:click="login">ログイン</button>
+      <button class="waves-effect waves-light btn-large" type="submit">ログイン</button>
     </div>
   </form>
   </div>
