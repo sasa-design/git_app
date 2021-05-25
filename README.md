@@ -3,71 +3,71 @@
 
 ![app-image](./image/app.jpg)
 
-## URL
+### URL
 
 ##### URL: http://withok.site
 
 ##### github: https://github.com/sasa-design/git_app
 
-## 概要
+### 概要
 
-* ・アプリケーション名「WithOK」
+* アプリケーション名「WithOK」
 
-* ・内容：カラオケに一緒に行く相手を探せるマッチングアプリ
+* 内容：カラオケに一緒に行く相手を探せるマッチングアプリ
 
 # アプリケーションの詳細について
 
-## 機能
+### 機能
 
-* ・ログイン機能（JWT）
+* ログイン機能（JWT）
 
-* ・CRUD機能
+* CRUD機能
 
-* ・プロフィール画像設定機能（active storage, S3）
+* プロフィール画像設定機能（active storage, S3）
 
-* ・プロフィール設定機能
+* プロフィール設定機能
 
-* ・検索機能（ransack）
+* 検索機能（ransack）
 
-* ・フォロー、フォロワー、マッチング機能
+* フォロー、フォロワー、マッチング機能
 
-* ・ページネーション機能(kaminari)
+* ページネーション機能(kaminari)
 
-* ・メッセージ機能
+* メッセージ機能
 
-## 使用技術
+### 使用技術
 
 #### フロントエンド
 
-* ・Vue.js（webpacker管理）
+* Vue.js（webpacker管理）
 
-* ・vue-router
+* vue-router
 
-* ・vuex
+* vuex
 
-* ・materialize(cssフレームワーク)
+* materialize(cssフレームワーク)
 
 #### バックエンド
 
-* ・Ruby ver2.6
+* Ruby ver2.6
 
-* ・Ruby on Rails ver6.0(api)
+* Ruby on Rails ver6.0(api)
 
-* ・rspec 
+* rspec 
 
-* ・mysql(RDS)
+* mysql(RDS)
 
 #### インフラ
 
-* ・Unicorn(appサーバー)
+* Unicorn(appサーバー)
 
-* ・Nginx(webサーバー)
+* Nginx(webサーバー)
 
-* ・AWS（EC2,RDS,S3.Route53）
+* AWS（EC2,RDS,S3.Route53）
 
-* ・Docker
+* Docker
 
-* ・docker-compose
+* docker-compose
 
 # アプリケーションの動作に関して
 
@@ -75,10 +75,10 @@
 
 # 補足
 
-## データベース構成
+### データベース構成
 
 ![detabase-image](./image/database_image.jpg)
 
-## インフラ構成図
+### インフラ構成図
 
 ![aws-image](./image/aws_image.jpg)
