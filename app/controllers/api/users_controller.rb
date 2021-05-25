@@ -24,16 +24,21 @@ class Api::UsersController < ApplicationController
   end
 
   def followers
+    page = params[:page]
+    per = 4
     user = User.find(current_user.id)
-    users = user.follows
+    users = user.follows.page(page).per(per)
     render json: users, each_serializer: ImageSerializer
   end
 
   def matchers
+    page = params[:page]
+    per = 4
     user = User.find(current_user.id)
-    users = user.matchers
+    users = user.matchers.page(page).per(per)
     render json: users, each_serializer: ImageSerializer
   end
+
     
   private
 

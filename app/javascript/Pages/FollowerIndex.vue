@@ -25,11 +25,17 @@
                 </li>
             </ul>
         </div>
+        <div class="center">
+            <ul class="pagination">
+                <li class="waves-effect" v-for="Page in Pages" v-on:click="pagination(Page)"><a>{{Page}}</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 </template>
 <script>
 import axios from 'axios';
+import qs from 'qs';
 import Header from '../Component/Header.vue';
 export default {
     components: {
@@ -37,7 +43,13 @@ export default {
     },
     data: function(){
         return {
-            followers: [],
+            currentPages: 1,
+            Pages: 4
+        }
+    },
+    computed: {
+        followers(){
+            return this.$store.state.userinfo.followers
         }
     },
     created: function(){
@@ -45,10 +57,26 @@ export default {
     },
     methods: {
         async fetchFollowers(){
-            await axios.get('/api/users/followers').then(res => {
-                this.followers = res.data;
+            await this.$store.dispatch('userinfo/fetchfollowers',{
+                params:{
+                    page: this.currentPages
+                },
+                paramsSerializer: function(params) {
+                    return qs.stringify(params)
+                },
             });
         },
+        async pagination(id){
+            this.currentPages = id
+            await this.$store.dispatch('userinfo/fetchfollowers',{
+                params:{
+                    page: this.currentPages
+                },
+                paramsSerializer: function(params) {
+                    return qs.stringify(params)
+                },
+            });
+        }
     }
 }
 </script>

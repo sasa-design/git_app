@@ -23,6 +23,7 @@ class User < ApplicationRecord
     .where(id: active_relationships.select(:follow_id))
   end
 
+
   def decode64(image)
     if image.present?
       prefix = image[/(image)(\/.*)(?=\;)/]

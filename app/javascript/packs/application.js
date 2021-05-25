@@ -13,7 +13,7 @@ import VueRouter from 'vue-router'
 import router from '../router/router'
 import stylesheet from '../stylesheets/application.scss'
 import js from 'materialize-css/dist/js/materialize.min.js'
-import Store from '../store/store.js'
+import store from '../store/store.js'
 import icon from 'material-design-icons/iconfont/material-icons.css'
 import qs from 'qs'
 
@@ -22,7 +22,7 @@ Vue.use(VueRouter);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    store:Store,
+    store,
     qs,
     js,
     stylesheet,

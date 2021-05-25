@@ -11,8 +11,8 @@ class Api::MypageController < ApplicationController
   end
   
   def update
-    @profile = Profile.find_or_initialize_by(user_id: current_user.id)
-    @profile.update(profile_params)
+    profile = Profile.find_or_initialize_by(user_id: current_user.id)
+    profile.update(profile_params)
     render json: profile , serializer: ProfileSerializer
   end
 
