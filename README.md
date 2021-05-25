@@ -1,24 +1,68 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーションについて
+___
+## URL
+___
+##### URL: http://withok.site  
+##### github: https://github.com/sasa-design/git_app
 
-Things you may want to cover:
+## 概要
+___
+##### ・アプリケーション名「WithOK」
 
-* Ruby version
+##### ・内容：カラオケに一緒に行く相手を探せるマッチングアプリ
 
-* System dependencies
+#　アプリケーションの詳細について
+___
+##　機能
+___
+##### ・ログイン機能（JWT）
 
-* Configuration
+##### ・CRUD機能
 
-* Database creation
+##### ・プロフィール画像設定機能（active storage, S3）
 
-* Database initialization
+##### ・プロフィール設定機能
 
-* How to run the test suite
+##### ・検索機能（ransack）
 
-* Services (job queues, cache servers, search engines, etc.)
+##### ・フォロー、フォロワー、マッチング機能
 
-* Deployment instructions
+##### ・ページネーション機能(kaminari)
 
-* ...
+##### ・メッセージ機能
+
+## 使用技術
+____
+#### フロントエンド
+
+##### ・Vue.js（webpacker管理）
+
+##### ・vue-router
+
+##### ・vuex
+
+##### ・materialize(cssフレームワーク)
+
+#### バックエンド
+
+##### ・Ruby ver2.6
+
+##### ・Ruby on Rails ver6.0(api)
+
+##### ・rspec 
+
+##### ・mysql(RDS)
+
+#### インフラ
+
+##### ・Unicorn(appサーバー)
+
+##### ・Nginx(webサーバー)
+
+##### ・AWS（EC2,RDS,S3.Route53）
+
+##### ・Docker
+
+##### ・docker-compose
