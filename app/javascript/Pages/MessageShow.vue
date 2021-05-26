@@ -83,6 +83,7 @@ export default {
         sendMessage(){
             axios.post('/api/messages',{message: this.message})
             .then(res => {
+                alert('メッセージを送信しました')
                 this.$router.replace(`/message/show/${id}`)
             });
         }
