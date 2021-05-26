@@ -89,9 +89,7 @@
 # 補足
 
 ### データベース構成
-
-![画像1.jpg](./images/画像1.jpg)
+![image](https://user-images.githubusercontent.com/73061106/119635629-d8dcaf00-be4e-11eb-8009-d59e28e43db1.png)
 
 ### インフラ構成図
 
-![画像2.jpg](./images/画像2.jpg)
