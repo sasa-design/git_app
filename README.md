@@ -2,7 +2,6 @@
 # アプリケーションについて
 
 ### URL
-![スクリーンショット(2).png](./images/スクリーンショット(2).png)
 
 ##### URL: http://withok.site
 
