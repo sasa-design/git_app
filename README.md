@@ -92,4 +92,6 @@
 ![image](https://user-images.githubusercontent.com/73061106/119635629-d8dcaf00-be4e-11eb-8009-d59e28e43db1.png)
 
 ### インフラ構成図
+![image](https://user-images.githubusercontent.com/73061106/119635840-09244d80-be4f-11eb-9366-4a80f92f9064.png)
+
 
