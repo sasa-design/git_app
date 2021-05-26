@@ -2,7 +2,7 @@
 # アプリケーションについて
 
 ### URL
-![app-image](スクリーンショット(2).png)
+![app-image](./images/スクリーンショット(2).png)
 
 ##### URL: http://withok.site
 
@@ -90,8 +90,8 @@
 
 ### データベース構成
 
-![detabase-image](./image/画像1.jpg)
+![detabase-image](./images/画像1.jpg)
 
 ### インフラ構成図
 
-![aws-image](./image/画像2.jpg)
+![aws-image](./images/画像2.jpg)
