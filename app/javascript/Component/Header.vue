@@ -1,6 +1,6 @@
 <template>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper #81d4fa light-blue lighten-3">
         <router-link to="/" class="brand-logo">{{logo}}</router-link>
         <ul class="right hide-on-med-and-down">
             <li><router-link to="/rooms/search"><i class="medium material-icons">search</i></router-link></li>

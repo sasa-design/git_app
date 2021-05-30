@@ -1,7 +1,7 @@
 <template>
    <div>
      <nav>
-       <div class="nav-wrapper">
+       <div class="nav-wrapper #81d4fa light-blue lighten-3">
          <ul id="nav-mobile" class="right">
            <li><router-link to="/signup">新規登録</router-link></li>
            <li><router-link to="/signin">ログイン</router-link></li>

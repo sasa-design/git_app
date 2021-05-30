@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
     render json: users, each_serializer: ImageSerializer
   end
 
-    
+
   private
 
   def user_params

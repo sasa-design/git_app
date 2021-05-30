@@ -1,7 +1,7 @@
 <template>
 <div>
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper #81d4fa light-blue lighten-3">
             <div class="col s12">
                 <router-link to="/mypage/index" class="breadcrumb">マイページ一覧</router-link>
                 <router-link to="/mypage/edit" class="breadcrumb">マイページ編集</router-link>

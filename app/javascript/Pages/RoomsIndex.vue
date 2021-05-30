@@ -1,7 +1,7 @@
 <template>
 <div>
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper #81d4fa light-blue lighten-3">
             <div class="col s12">
                 <router-link to="/rooms/create" class="breadcrumb">ルーム作成</router-link>
                 <router-link to="/rooms/index" class="breadcrumb">ルーム一覧</router-link>

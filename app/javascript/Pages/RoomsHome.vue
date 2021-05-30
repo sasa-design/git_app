@@ -1,7 +1,7 @@
 <template>
 <div>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper #81d4fa light-blue lighten-3">
       <router-link to="/rooms/index" class="left waves-effect waves-light btn-large">ルームを編集</router-link>  
       <router-link to="/" class="center brand-logo">ルーム作成</router-link>
       <ul class="right hide-on-med-and-down">

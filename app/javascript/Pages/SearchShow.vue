@@ -1,7 +1,7 @@
 <template>
 <div>
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper #81d4fa light-blue lighten-3">
             <div class="col s12">
                 <router-link to="/rooms/search" class="breadcrumb">ルーム検索</router-link>
                 <router-link to="/" class="breadcrumb">ルーム詳細</router-link>

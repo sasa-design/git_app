@@ -1,7 +1,7 @@
 <template>
 <div>
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper #81d4fa light-blue lighten-3">
         <div class="col s12">
             <router-link to="/rooms/index" class="breadcrumb">ルーム作成</router-link>
             <router-link to="/rooms/index" class="breadcrumb">ルーム一覧</router-link>
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="row">
-            <button class="waves-effect waves-light btn-large" v-on:click="updateRoom(id)">編集完了</button>
+            <button class="waves-effect waves-light btn-large right" v-on:click="updateRoom(id)">編集完了</button>
         </div>
     </form>
 </div>

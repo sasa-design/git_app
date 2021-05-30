@@ -1,7 +1,7 @@
 <template>
 <div>
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper #81d4fa light-blue lighten-3">
             <div class="col s12">
                 <router-link to="/message/index" class="breadcrumb">通知一覧</router-link>
                 <router-link :to="{path: `/matcher/show/${id}`}" class="breadcrumb">ユーザー詳細</router-link>

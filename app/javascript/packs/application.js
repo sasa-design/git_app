@@ -17,11 +17,14 @@ import Store from '../store/store.js'
 import icon from 'material-design-icons/iconfont/material-icons.css'
 import qs from 'qs'
 
-
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)
 Vue.use(VueRouter);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    imagePath,
+    images,
     store:Store,
     qs,
     js,

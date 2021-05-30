@@ -1,13 +1,13 @@
 <template>
 <div>
   <nav>
-   <div class="nav-wrapper">
+   <div class="nav-wrapper #81d4fa light-blue lighten-3">
       <router-link to="/" class="brand-logo">WithOK</router-link>
     </div>
   </nav>
   <div class="home-main">
     <div class="field">
-      <button class="waves-effect waves-light btn-large" v-on:click="guestLogin">今すぐ始める！</button>
+      <button class="waves-effect waves-light btn-large #fbc02d yellow darken-2" v-on:click="guestLogin">今すぐ始める！</button>
     </div>
   </div> 
 </div>
@@ -40,3 +40,5 @@ import axios from 'axios'
     }
   }
 </script>
+<style scoped>
+</style>

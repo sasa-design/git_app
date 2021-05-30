@@ -1,14 +1,13 @@
 <template>
 <div>
 <nav>
-<div class="nav-wrapper">
+<div class="nav-wrapper #81d4fa light-blue lighten-3">
   <ul class="hide-on-med-and-down">
     <li>
       <router-link to="/" class="brand-logo">WithOK</router-link>
     </li>
   </ul>
   <ul class="right hide-on-med-and-down">
-    <li><router-link to="/signin" class="sign-icon">ログイン</router-link></li>
     <li><router-link to="/" class="sign-icon">Top</router-link></li>
   </ul>
 </div>
@@ -19,18 +18,18 @@
         <div class="text-red" v-if="error">{{ error }}</div>
           <div class="input-field">
             <label for="name">name</label>
-            <input id="name" type="text" class="validate" v-model="name" required="required">
+            <input id="name" type="text" class="validate" v-model="name" required="required" style="color:white">
           </div>
           <div class="input-field">
             <label for="email_name">email</label>
-            <input id="email_name" type="email" class="validate" v-model="email" required="required">
+            <input id="email_name" type="email" class="validate" v-model="email" required="required" style="color:white">
           </div>
           <div class="input-field">
             <label for="password_name">password</label>
-            <input id="password_name" type="password" class="validate" v-model="password" required="required">
+            <input id="password_name" type="password" class="validate" v-model="password" required="required" style="color:white">
           </div>
           <div>
-            <button type="submit" class="waves-effect waves-light btn-large" v-on:click="signup">新規登録</button>
+            <button type="submit" class="waves-effect waves-light btn-large #fbc02d yellow darken-2" v-on:click="signup">新規登録</button>
           </div>
       </form>
     </div>
