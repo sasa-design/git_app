@@ -12,32 +12,25 @@ import App from '../app.vue'
 import VueRouter from 'vue-router'
 import router from '../router/router'
 import stylesheet from '../stylesheets/application.scss'
-import js from 'materialize-css/dist/js/materialize.min.js'
 import Store from '../store/store.js'
-import icon from 'material-design-icons/iconfont/material-icons.css'
 import qs from 'qs'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
 
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 Vue.use(VueRouter);
+Vue.use(Buefy)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    Buefy,
     imagePath,
     images,
     store:Store,
     qs,
-    js,
     stylesheet,
-    icon,
     router,
-    created() {
-      const userString = localStorage.getItem('currentUser');
-      if (userString) {
-        const userData = JSON.parse(userString);
-        this.$store.commit('auth/SET_CURRENT_USER', userData);
-      }
-    },
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
