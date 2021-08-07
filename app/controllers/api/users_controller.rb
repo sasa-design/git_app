@@ -17,9 +17,9 @@ class Api::UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
-      render head :no_content
+      render json: { success:[ '登録が完了しました'] }
     else
-      render json: user.errors,status: :unprocessable_entity
+      render json: { message: ['please input again'] },status: :unprocessable_entity
     end
   end
 

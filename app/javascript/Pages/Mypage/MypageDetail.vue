@@ -97,10 +97,7 @@ export default {
           field: 'gender',
           label: 'Gender',
         }
-      ]
+      ],
     }
   }
 }
-</script>
-<style scoped>
-</style>

@@ -10,27 +10,39 @@ require('channels');
 import Vue from 'vue'
 import App from '../app.vue'
 import VueRouter from 'vue-router'
-import router from '../router/router'
+import router from '../router/router.js'
+import axios from 'axios'
 import stylesheet from '../stylesheets/application.scss'
 import Store from '../store/store.js'
 import qs from 'qs'
+import '@mdi/font/css/materialdesignicons.css';
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
+Vue.use(Buefy);
 
+
+Vue.prototype.$axios = axios
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 Vue.use(VueRouter);
-Vue.use(Buefy)
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    Buefy,
+    axios,
     imagePath,
     images,
     store:Store,
     qs,
     stylesheet,
     router,
+    created() {
+      const userString = localStorage.getItem('currentUser');
+      if (userString) {
+        const userData = JSON.parse(userString);
+        this.$store.commit('auth/SET_CURRENT_USER', userData);
+      }
+    },
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)

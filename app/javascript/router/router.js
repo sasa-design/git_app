@@ -16,8 +16,11 @@ import MatchingIndex from '../Pages/Message/MatchingIndex.vue';
 import MatchingShow from '../Pages/Message/MatchingShow.vue';
 import FollowerIndex from '../Pages/Message/FollowerIndex.vue';
 import FollowerShow from '../Pages/Message/FollowerShow.vue';
+import Signup from '../Pages/Signup.vue';
+import Signin from '../Pages/Signin.vue';
 
 const router  = new Router({
+    mode: "history",
     routes: [
       { path: '/',component: Home },
       { path: '/mypage/detail',component: MypageDetail },
@@ -33,7 +36,9 @@ const router  = new Router({
       { path: '/matching/index',component: MatchingIndex },
       { path: '/matching/show',component: MatchingShow },
       { path: '/follower/index',component: FollowerIndex},
-      { path: '/follower/show',component: FollowerShow },     
+      { path: '/follower/show',component: FollowerShow },   
+      { path: '/signup',component: Signup },
+      { path: '/signin',component: Signin }
     ],
 });
 export default router;
