@@ -24,7 +24,7 @@ const router  = new Router({
     routes: [
       { path: '/',component: Home },
       { path: '/mypage/detail',component: MypageDetail },
-      { path: '/mypage/edit/pic',component: MypageEditPic },
+      { path: '/mypage/edit/pic/:id',component: MypageEditPic },
       { path: '/mypage/edit/pro',component: MypageEditPro },
       { path: '/room/create',component: RoomCreate },
       { path: '/room/index',component: RoomIndex },

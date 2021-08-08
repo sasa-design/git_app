@@ -1,8 +1,13 @@
 class Api::RoomsController < ApplicationController
-    before_action :authenticate, only: [:create,:update,:destroy]
     def index
-        rooms = Room.where(user_id: current_user.id)
-        render json: rooms, each_serializer: RoomSerializer
+        rooms = Room.where(user_id: userId_params[:userId])
+        page = params[:page] || 1
+        per = params[:per] || 10
+        @rooms = rooms.page(page).per(per)
+        response = {
+            rooms: @rooms.select(:id, :area, :genre, :artist, :date, :time),
+        }
+        render json: response
     end
 
     def show
@@ -35,6 +40,9 @@ class Api::RoomsController < ApplicationController
     end
 
     private
+    def userId_params
+        params.require(:q).permit(:userId)
+    end
 
     def room_params
         params.fetch(:room,{}).permit(

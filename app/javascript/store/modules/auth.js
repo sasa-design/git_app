@@ -4,21 +4,19 @@ const state = {
 };  
 
 const getters = {
-  currentUser(state){
-    return state.currentUser
-  }
+  currentUser: state => state.currentUser,
 };
 
 const mutations = {
   SET_CURRENT_USER: (state, user) => {
     state.currentUser =  user;
     localStorage.setItem('currentUser', JSON.stringify(user));
-    axios.defaults.headers.common['Authorization'] = `Bearer ${user.user.token}`;
+    axios.defaults.headers.common['Authorization'] = `${user.user.token}`;
   },
   CLEAR_CURRENT_USER: () => {
     state.currentUser = null;
     localStorage.removeItem('currentUser');
-    location.reload();
+    this.$router.reload("/");
   }
 };
 

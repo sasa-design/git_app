@@ -3,7 +3,6 @@
         position="static"
         :mobile="mobile"
         :expand-on-hover="expandOnHover"
-        :reduce="reduce"
         :delay="expandWithDelay ? 500 : null"
         type="is-light"
         open
@@ -54,7 +53,7 @@
                         <b-menu-item 
                             icon="door-open" 
                             label="ルームを編集"
-                            tag="router-link" :to="{ path: `/room/edit/${id}` }"
+                            tag="router-link" :to="{ path: `/room/edit/${this.userId}` }"
                         ></b-menu-item>
                     </b-menu-item>
 
@@ -84,36 +83,40 @@
                     <b-menu-item 
                         icon="logout" 
                         label="Logout"
+                        v-on:click="logout()"
                     ></b-menu-item>
                 </b-menu-list>
             </b-menu>
         </div>
-    </sidebar>
+    </b-sidebar>
 </template>
 <script>
+import axios from 'axios';
 export default {
-  props: {
-    pageacitve:{
-      defalut: false
-    },
-    rmactive:{
-      default: false
-    },
-    msactive:{
-      defalut: false
-    }
-  },
   data() {
     return {
       expandOnHover: false,
       expandWithDelay: false,
-      mobile: "reduce",
+      mobile: "FullWidth",
       mypageactive: "",
       mypageexpanded: "",
-      mypage: this.pageactive,
-      room: this.rmactive,
-      message: this.msactive,
     };
+  },
+  computed: {
+    userId(){
+      return this.$store.getters['auth/currentUser'].id
+    }
+  },
+  methods: {
+    async logout(){
+      await this.$store.dispatch("auth/logout")
+      try {
+        aleart("ログアウトしました")
+      } 
+      catch(error) {
+        alert('ログアウトに失敗しました')
+      }
+    }
   }
 };
 </script>

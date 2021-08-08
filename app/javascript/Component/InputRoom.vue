@@ -1,11 +1,5 @@
 <template>
-<div>
-  <Header />
-  <div class="tile is-ancestor">
-    <div class="tile is-parent">
-      <Sidebar />
-    </div>
-    <div class="tile is-parent">
+<div class="tile is-parent">
     <div class="tile">
         <div class="tile is-child box section"> 
 
@@ -107,43 +101,33 @@
         </div> 
     </div>
 </div>
-  </div>
-</div>
 </template>
 <script>
-import Header from "../../Component/Header.vue";
-import Sidebar from "../../Component/Sidebar.vue";
 export default {
-  components: {
-    Header,
-    Sidebar,
-  },
-  data() {
-    return {
-      roomInfo: {
-        area: "",
-        genre: "",
-        artist: "",
-        date: "",
-        time: "",
-        comment: "",
-      },
+    data() {
+        return {
+            roomInfo: {
+                area: "",
+                genre: "",
+                artist: "",
+                date: "",
+                time: "",
+                comment: "",
+            },
+        }
+    },
+    methods: {
+        async createRoom() {
+            await axios.post('/api/rooms', { room: this.room })
+            try {
+                alert("登録完了");
+                this.$router.push({path: '/mypage/detail'});
+            }
+            catch(error) {
+                alert("登録失敗");
+                console.log(error);
+            }
+        }
     }
-  },
-  methods: {
-    async createRoom() {
-      await axios.post('/api/rooms', { room: this.room })
-      try {
-        alert("登録完了");
-        this.$router.push({path: '/mypage/detail'});
-      }
-      catch(error) {
-        alert("登録失敗");
-        console.log(error);
-      }
-    }
-  }
 }
 </script>
-<style scoped>
-</style>

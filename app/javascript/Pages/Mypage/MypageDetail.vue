@@ -8,9 +8,7 @@
     <div class="tile is-parent is-vertical">
       <div class="tile"> 
         <div class="tile is-child box">
-          <figure class="image is-square">
-            <img src="https://bulma.io/images/placeholders/256x256.png">
-          </figure>
+          <PicSlide />
         </div>
       </div>
       <div class="tile">
@@ -19,14 +17,14 @@
             <div class="card-content">
             <div class="content">
               <h3>
-                Subtitle
+                自己紹介
               </h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+                {{firstDetail}} <br/>
               </p>
             </div>
             </div>
-            <b-collapse :open="false" position="is-bottom" aria-id="contentIdForA11y1">
+            <b-collapse v-show="detailBool" :open="false" position="is-bottom" aria-id="contentIdForA11y1">
                 <template #trigger="props">
                     <a aria-controls="contentIdForA11y1">
                         <b-icon :icon="!props.open ? 'menu-down' : 'menu-up'"></b-icon>
@@ -34,13 +32,11 @@
                     </a>
                 </template>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>       
+                  {{secondDetail}} <br/> 
                 </p>
             </b-collapse>
             <footer class="card-footer">
-                <a class="card-footer-item">Save</a>
-                <a class="card-footer-item">Edit</a>
-                <a class="card-footer-item">Delete</a>
+                <router-link to="/mypage/edit/pro" class="card-footer-item">Edit</router-link>
             </footer>
           </section>
         </div>
@@ -49,7 +45,41 @@
     <div class="tile is-parent">
       <div class="tile">
         <div class="tile is-chile box">
-          <b-table :data="data" :columns="columns"></b-table>
+
+          <label class="label">居住地</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.living}}</input>
+          </div>
+
+          <label class="label">身長</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.height}}</input>
+          </div>
+
+          <label class="label">見た目</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.look}}</input>
+          </div>
+
+          <label class="label">所属</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.belongs}}</input>
+          </div>
+
+          <label class="label">休日</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.holiday}}</input>
+          </div>
+
+          <label class="label">煙草</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.living}}</input>
+          </div>
+
+          <label class="label">飲酒</label>
+          <div class="control">
+            <input class="input" readonly>{{profileInfo.drink}}</input>
+          </div>
         </div>
       </div>
     </div>
@@ -57,47 +87,46 @@
 </div>
 </template>
 <script>
+import axios from "axios";
 import Header from "../../Component/Header.vue";
 import Sidebar from "../../Component/Sidebar.vue";
+import PicSlide from "../../Component/PicSlide.vue";
 export default {
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    PicSlide,
   },
   data() {
     return {
-      data: [
-        { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male' },
-        { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016-12-15 06:00:53', 'gender': 'Male' },
-        { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016-04-26 06:26:28', 'gender': 'Female' },
-        { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016-04-10 10:28:46', 'gender': 'Male' },
-        { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016-12-06 14:38:38', 'gender': 'Female' }
-      ],
-      columns: [
-        {
-          field: 'id',
-          label: 'ID',
-          width: '40',
-          numeric: true
-        },
-        {
-          field: 'first_name',
-          label: 'First Name',
-        },
-        {
-          field: 'last_name',
-          label: 'Last Name',
-        },
-        {
-          field: 'date',
-          label: 'Date',
-          centered: true
-        },
-        {
-          field: 'gender',
-          label: 'Gender',
+      profileInfo: {},
+      firstDetail: "",
+      secondDetail: "",
+      detailBool: false
+    }
+  },
+  computed: {
+    userId(){
+      return this.$store.getters['auth/currentUser'].id
+    }
+  },
+  created() {
+    this.fetchProfile();
+  },
+  methods: {
+    async fetchProfile() {
+      const res = await axios.get(`/api/mypage/${this.userId}`)
+      try {
+        this.profileInfo = res.data;
+        this.firstDetail = res.data.detail.substr( 0, 100 );
+        this.secondDetail = res.data.detail.substr( 101, 300 );
+        if(res.data.detail.length > 100) {
+          this.detailBool = true
         }
-      ],
+      } catch (error) {
+        aleart("error")
+      }
     }
   }
 }
+</script>
