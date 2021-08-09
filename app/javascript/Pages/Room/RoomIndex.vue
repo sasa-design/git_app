@@ -7,7 +7,7 @@
         </div>
         <div class="tile is-parent is-vertical ">
             <div class="section">
-                <hr>
+                
                 <b-pagination
                     :total="total"
                     v-model="current"
@@ -28,7 +28,32 @@
             </div>
             <div class="tile">
                 <div class="tile is-child box section">
-                    <b-table :data="rooms" :columns="columns"></b-table>
+                    
+                    <b-tabs>
+                        <b-tab-item label="ルーム一覧">
+                            <b-table
+                                :data="rooms"
+                                :columns="columns"
+                                :selected.sync="selected"
+                                focusable>
+                            </b-table>
+                        </b-tab-item>
+
+                        <b-tab-item label="選択中">
+                            <article class="message is-primary">
+                                <div class="message-header">
+                                    <router-link :to="{ path: `/room/edit/${selected.id}`}" class="button is-primary">このルームを編集する</router-link>
+                                </div>
+                            <div class="message-body">
+                                <label class="label">コメント</label>
+                                <div class="box">
+                                    {{selected.comment}}
+                                </div>
+                            </div>
+                            </article>
+                        </b-tab-item>
+                    </b-tabs>
+                   
                 </div>
             </div>
         </div>
@@ -47,7 +72,7 @@ export default {
     },
     data() {
         return {
-            total: 50,
+            total: "",
             current: 1,
             perPage: 10,
             rangeBefore: 1,
@@ -57,6 +82,7 @@ export default {
             isRounded: true,
             prevIcon: 'chevron-left',
             nextIcon: 'chevron-right',
+            selected: "",
             rooms: [],
             columns: [
                 {
@@ -68,15 +94,6 @@ export default {
                 {
                     field: 'area',
                     label: '場所',
-                },
-                {
-                    field: 'genre',
-                    label: 'ジャンル',
-                },
-                {
-                    field: 'artist',
-                    label: 'アーティスト',
-                    centered: true
                 },
                 {
                     field: 'date',
@@ -95,15 +112,16 @@ export default {
         }
     },
     created() {
-        this.setRooms()
+        this.fetchRooms()
     },
     methods: {
         fetchRooms() {
-            const url = `/api/rooms?page=${this.current}?per=${this.perPage}`;
-            axios.get(url, {
+            axios.get("/api/rooms", {
                 params:{
                     q: {
-                        userId: this.userId
+                        userId: this.userId,
+                        page: this.current,
+                        per: this.perPage
                     }
                 },
                 paramsSerializer(params) {

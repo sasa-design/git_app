@@ -30,7 +30,7 @@ const router  = new Router({
       { path: '/room/index',component: RoomIndex },
       { path: '/room/edit/:id',component: RoomEdit },
       { path: '/room/search',component: RoomSearch },
-      { path: '/room/search/show',component: RoomSearchShow },
+      { path: '/room/search/show/:id',component: RoomSearchShow },
       { path: '/message/index',component: MessageIndex },
       { path: '/message/show',component: MessageShow },
       { path: '/matching/index',component: MatchingIndex },

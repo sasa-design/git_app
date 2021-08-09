@@ -53,7 +53,7 @@
                         <b-menu-item 
                             icon="door-open" 
                             label="ルームを編集"
-                            tag="router-link" :to="{ path: `/room/edit/${this.userId}` }"
+                            tag="router-link" to="/room/index"
                         ></b-menu-item>
                     </b-menu-item>
 

@@ -1,11 +1,11 @@
 class Api::RoomsController < ApplicationController
     def index
-        rooms = Room.where(user_id: userId_params[:userId])
-        page = params[:page] || 1
-        per = params[:per] || 10
+        rooms = Room.where(user_id: index_params[:userId])
+        page = index_params[:page] || 1
+        per = index_params[:per] || 10
         @rooms = rooms.page(page).per(per)
         response = {
-            rooms: @rooms.select(:id, :area, :genre, :artist, :date, :time),
+            rooms: @rooms.select(:id, :genre, :artist, :area, :date, :time, :comment),
         }
         render json: response
     end
@@ -16,18 +16,16 @@ class Api::RoomsController < ApplicationController
     end
 
     def create
-        room = Room.new(room_params)
-        if room.save
-            render json: room, serializer: RoomSerializer
-        else
-            render json: room.errors, status: :unprocessable_entity
-        end
+        room = Room.create(room_params)
     end
 
     def update
         room = Room.find(params[:id])
-        room.update(room_params)
-        render json: room, serializer: RoomSerializer
+        if room.update(room_params)
+            render json: room, serializer: RoomSerializer
+        else 
+            render json: room.errors, status: :unprocessable_entity
+        end
     end
 
     def destroy
@@ -40,15 +38,13 @@ class Api::RoomsController < ApplicationController
     end
 
     private
-    def userId_params
-        params.require(:q).permit(:userId)
+    def index_params
+        params.require(:q).permit(:userId, :page, :per)
     end
 
     def room_params
-        params.fetch(:room,{}).permit(
-            :area, :genre, :artist, :date, :time, :comment
-        ).merge(
-            user_id: current_user.id
+        params.require(:room).permit(
+            :area, :genre, :artist, :date, :time, :comment,:user_id
         )
     end
 end

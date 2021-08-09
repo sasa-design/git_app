@@ -202,7 +202,7 @@ export default {
     async updateProfile(){
       await axios.put(`/api/mypage/${this.userId}`,{ profile: this.profileInfo});
       try{
-      alert('変更が完了しました');
+        alert('変更が完了しました');
         this.$router.push("/mypage/detail")
       }
       catch(error){

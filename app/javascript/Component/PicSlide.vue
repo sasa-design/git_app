@@ -3,7 +3,9 @@
         <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
             <section :class="`hero is-medium is-${carousel.color}`">
                 <div class="hero-body has-text-centered">
-                    <h1 class="title">{{carousel.text}}</h1>
+                    <figure class="image is-square">
+                        <img src="https://bulma.io/images/placeholders/256x256.png">
+                    </figure>
                 </div>
             </section>
         </b-carousel-item>

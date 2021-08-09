@@ -1,0 +1,164 @@
+<template>
+<div>
+    <Header />
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <Sidebar />
+        </div>
+        <div class="tile is-parent is-vertical">
+            <div class="section">
+                
+                <b-pagination
+                    :total="total"
+                    v-model="current"
+                    :range-before="rangeBefore"
+                    :range-after="rangeAfter"
+                    :order="order"
+                    :size="size"
+                    :rounded="isRounded"
+                    :per-page="perPage"
+                    :icon-prev="prevIcon"
+                    :icon-next="nextIcon"
+                    @input="fetchRooms"
+                    aria-next-label="Next page"
+                    aria-previous-label="Previous page"
+                    aria-page-label="Page"
+                    aria-current-label="Current page">
+                </b-pagination>
+            </div>
+            <div class="tile">
+                <b-tabs>
+                    <b-tab-item label="検索結果ルーム一覧">
+                        <b-table
+                            :data="data"
+                            :selected.sync="selected"
+                            focusable>
+                            <template v-for="column in columns">
+                                <b-table-column :key="column.id" v-bind="column">
+                                    <template
+                                        v-if="column.searchable && !column.numeric"
+                                        #searchable="props">
+                                        <b-input
+                                            v-model="props.filters[props.column.field]"
+                                            placeholder="Search..."
+                                            icon="magnify"
+                                            size="is-small" />
+                                    </template>
+                                    <template v-slot="props">
+                                        {{ props.row[column.field] }}
+                                    </template>
+                                </b-table-column>
+                            </template>
+                        </b-table>
+                    </b-tab-item>
+                    <b-tab-item label="選択中">
+                        <article class="message is-primary">
+                            <div class="message-header">
+                                <router-link :to="{ path: `/room/search/show/${selected.id}`}" class="button is-primary">このユーザーを見に行く</router-link>
+                            </div>
+                            <div class="message-body">
+                                <label class="label">コメント</label>
+                                <div class="box">
+                                    {{selected.comment}}
+                                </div>
+                            </div>
+                        </article>
+                    </b-tab-item>
+                </b-tabs>
+            </div>
+        </div>
+            
+    </div>
+</div>
+</template>
+<script>
+import axios from "axios"
+import Header from "../../Component/Header.vue";
+import Sidebar from "../../Component/Sidebar.vue";
+
+export default {
+    components: {
+        Header,
+        Sidebar,
+    },
+    data() {
+        return {
+            total: "",
+            current: 1,
+            perPage: 10,
+            rangeBefore: 1,
+            rangeAfter: 1,
+            order: 'is-centered',
+            size: 'is-medium',
+            isRounded: true,
+            prevIcon: 'chevron-left',
+            nextIcon: 'chevron-right',
+            selected: "",
+            rooms: [],
+            columns: [
+                {
+                    field: "id",
+                    label: "ID",
+                    width: "100",
+                    numeric: true
+                },
+                {
+                    field: "area",
+                    label: "場所",
+                    searchable: true,
+                },
+                {   
+                    field: "genre",
+                    label: "ジャンル",
+                    searchable: true,
+                },
+                {
+                    field: "artist",
+                    label: "アーティスト",
+                    searchable: true,
+                },
+                {
+                    field: "date",
+                    label: "日付",
+                    searchable: true,
+                },
+                {
+                    field: "time",
+                    label: "時間",
+                    searchable: true,
+                }
+            ]
+        }
+    },
+    computed: {
+        userId(){
+            return this.$store.getters['auth/currentUser'].id
+        }
+    },
+    created() {
+        this.fetchRooms()
+    },
+    methods: {
+        fetchRooms() {
+            axios.get("/api/search",{
+                params:{
+                    q: {
+                        userId: this.userId,
+                        page: this.current,
+                        per: this.perPage 
+                    }
+                },
+                paramsSerializer(params) {
+                    return qs.stringify(params)
+                },
+                responseType: 'json'
+            })
+            .then(res => {
+                this.rooms = res.data.rooms;
+                this.total = res.data.rooms.length;
+            })
+        }
+    }
+}
+</script>
+

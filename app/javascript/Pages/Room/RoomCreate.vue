@@ -103,7 +103,7 @@
     </div>
     <div class="tile">
         <div class="tile is-child box">
-            <b-button type="is-success" v-on:click="roomCreate()">ルーム作成</b-button>
+            <b-button type="is-success" v-on:click="roomCreate">ルーム作成</b-button>
         </div> 
     </div>
 </div>
@@ -111,6 +111,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios'
 import Header from "../../Component/Header.vue";
 import Sidebar from "../../Component/Sidebar.vue";
 export default {
@@ -127,12 +128,19 @@ export default {
         date: "",
         time: "",
         comment: "",
+        user_id: "",
       },
     }
   },
+  computed: {
+    userId(){
+      return this.$store.getters['auth/currentUser'].id
+    }
+  },
   methods: {
-    async createRoom() {
-      await axios.post('/api/rooms', { room: this.room })
+    async roomCreate() {
+      this.roomInfo.user_id = this.userId
+      await axios.post('/api/rooms', { room: this.roomInfo })
       try {
         alert("登録完了");
         this.$router.push({path: '/mypage/detail'});

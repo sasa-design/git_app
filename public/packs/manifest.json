@@ -1,15 +1,19 @@
 {
-  "application.js": "/packs/js/application-e1fd401fbffcb762fa83.js",
-  "application.js.map": "/packs/js/application-e1fd401fbffcb762fa83.js.map",
+  "application.js": "/packs/js/application-00c5614a842b305707fc.js",
+  "application.js.map": "/packs/js/application-00c5614a842b305707fc.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-e1fd401fbffcb762fa83.js"
+        "/packs/js/application-00c5614a842b305707fc.js"
       ],
       "js.map": [
-        "/packs/js/application-e1fd401fbffcb762fa83.js.map"
+        "/packs/js/application-00c5614a842b305707fc.js.map"
       ]
     }
   },
+  "media/fonts/materialdesignicons-webfont.eot?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-53f53f50.eot",
+  "media/fonts/materialdesignicons-webfont.ttf?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-0e4e0b3d.ttf",
+  "media/fonts/materialdesignicons-webfont.woff2?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-e9db4005.woff2",
+  "media/fonts/materialdesignicons-webfont.woff?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-d8e8e0f7.woff",
   "media/images/iStock-1191126509.jpg": "/packs/media/images/iStock-1191126509-b1cc4370f04c80ceb66d8c32429dd4a5.jpg"
 }

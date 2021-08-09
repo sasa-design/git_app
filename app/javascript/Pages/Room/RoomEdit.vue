@@ -102,7 +102,7 @@
       </div>
       <div class="tile">
         <div class="tile is-child box">
-          <b-button type="is-success" v-on:click="roomEdit()">ルーム作成</b-button>
+          <b-button type="is-success" v-on:click="roomUpdate(id)">ルーム作成</b-button>
         </div> 
       </div>
     </div>
@@ -110,6 +110,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios';
 import Header from "../../Component/Header.vue";
 import Sidebar from "../../Component/Sidebar.vue";
 export default {
@@ -119,6 +120,7 @@ export default {
   },
   data() {
     return {
+      id: this.$route.params.id,
       roomInfo: {
         area: "",
         genre: "",
@@ -130,14 +132,32 @@ export default {
     }
   },
   created () {
-    this.fetchRoom()
+    this.fetchRoom(this.id)
   },
   methods: {
-    async fetchRoom() {
-
+    async fetchRoom(id) {
+      const res = await axios.get(`/api/rooms/${id}`)
+      try {
+        this.roomInfo.area = res.data.area
+        this.roomInfo.genre = res.data.genre
+        this.roomInfo.artist = res.data.artist
+        this.roomInfo.date = res.data.date
+        this.roomInfo.time = res.data.time
+        this.roomInfo.comment = res.data.comment
+      }
+      catch(error) {
+        aleart(error)
+      }
     },
-    async editRoom() {
-
+    async roomUpdate(id) {
+      await axios.put(`/api/rooms/${id}`,{ room: this.roomInfo})
+      try {
+        aleart("変更完了")
+        this.$router.push("/room/index")
+      }
+      catch(error) {
+        aleart("変更に失敗しました")
+      }
     }
   }
 }
