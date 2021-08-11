@@ -3,4 +3,6 @@ class UserSerializer < ActiveModel::Serializer
   has_many :rooms
   has_many :profiles
   has_many :messages
+
+ 
 end

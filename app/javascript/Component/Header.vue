@@ -12,7 +12,7 @@
                     <router-link to="/signup" class="button is-primary">
                         <strong>Sign up</strong>
                     </router-link>
-                    <router-link to="/signin" class="button is-light">
+                    <router-link to="/signin" class="button is-primary">
                         <strong>Log in</strong>
                     </router-link>
                 </div>

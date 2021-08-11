@@ -24,6 +24,19 @@ export default {
                 { text: 'Slide 5', color: 'danger' }
             ]
         }
+    },
+    computed: {
+        userId(){
+            return this.$store.getters['auth/currentUser'].id
+        }
+    },
+    created() {
+        this.fetchImages()
+    },
+    methods: {
+        async fetchImages() {
+            
+        }
     }
 }
 </script>

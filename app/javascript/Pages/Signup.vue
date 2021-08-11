@@ -1,11 +1,11 @@
 <template>
-<div class="posi">
+<div class="container is-primary">
   <Header />
-  <div class="main">
-    <div class="tile is-acestor">
-      <div class="tile is-parent is-vertical">
+  <section class="hero is-fullheight is-success">
+    <div class="hero-body">
+      <div class="is-vcentered mx-auto">
         <form>
-          <div class="tile is-child box">
+          <div class="box">
             <b-field label="Name">
               <b-input v-model="name"></b-input>
             </b-field>
@@ -19,7 +19,7 @@
               </b-input>
             </b-field>
           
-            <b-field label="Password">
+            <b-field label="パスワード">
               <b-input type="password"
                 password-reveal
                 v-model="password"
@@ -27,13 +27,13 @@
               </b-input>
             </b-field>  
           </div>
-          <div class="tile is-child">
-            <b-button type="submit" v-on:click="signup()">新規登録</b-button>
+          <div>
+            <b-button type="is-success is-light" expanded v-on:click="signup()">新規登録</b-button>
           </div>
         </form>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 </template>
 <script>
@@ -75,11 +75,4 @@ export default {
 </script>
 <style>
 
-.main{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-left: auto;
-  margin-right: auto;
-}
 </style>

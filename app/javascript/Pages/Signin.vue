@@ -1,11 +1,10 @@
 <template>
-<div class="background">
+<div class="container is-primary">
   <Header />
-  <div class="main">
-    <div class="tile is-acestor">
-      <div class="tile is-parent is-vertical">
-        <form>
-          <div class="tile is-child box">
+  <section class="hero is-fullheight is-success">
+    <div class="hero-body">
+      <div class="is-vcentered mx-auto has-background-danger-dark">
+          <div class="box">
             
             <b-field label="メールアドレス">
               <b-input type="email"
@@ -22,15 +21,15 @@
                 v-model="password"
               >
               </b-input>
-            </b-field>  
+            </b-field> 
+
           </div>
-          <div class="tile is-child">
-            <b-button type="submit" v-on:click="login()">ログイン</b-button>
+          <div>
+            <b-button type="submit" expanded v-on:click="login()">ログイン</b-button>
           </div>
-        </form>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 </template>
 <script>
@@ -67,7 +66,4 @@ export default {
 }
 </script>
 <style>
-.background {
-  Width: 100%;
-}
 </style>
