@@ -1,57 +1,65 @@
 <template>
 <div>
   <Header />
-  <div class="tile is-ancestor">
-    <div class="tile is-parent">
+  <main class="columns has-background-light">
+    <div class="column is-3 box">
       <Sidebar />
     </div>
-    <div class="tile is-parent is-vertical">
-      <div class="tile">
-        <div class="tile is-child box">
-        </div>
-      </div>
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/256x256.png">
+    <div class="column is-4 my-6">
+      <div class="box">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
           </figure>
         </div>
-      </div>
-    </div>
-    <div class="tile is-parent is-vertical">
-      <div class="tile"> 
-        <div class="tile is-child box">
-          <div class="buttons">
-            <b-button type="is-primary" expanded v-on:click="imageUpdate()">Expanded</b-button>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">{{this.userName}}</p>
+            </div>
           </div>
-          <input type="file" v-on:change="setImage()">
         </div>
       </div>
-      <div class="tile">
-        <div class="tile is-child box">
-          <b-carousel>
-            <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
-              <section :class="`hero is-medium is-${carousel.color}`">
-                <div class="hero-body has-text-centered">
-                  <h1 class="title">{{carousel.text}}</h1>
-                </div>
-              </section>
-            </b-carousel-item>
-          </b-carousel>
-        </div>
       </div>
     </div>
-  </div>
+    <div class="column is-5 my-6">
+      <div class="box">
+        <div class="buttons">
+          <b-button type="is-primary" expanded v-on:click="imageUpdate()">Expanded</b-button>
+        </div>
+        <input type="file" v-on:change="setImage()">
+      </div>
+      <div class="box">
+        <b-carousel>
+          <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
+            <section :class="`hero is-medium is-${carousel.color}`">
+              <div class="hero-body has-text-centered">
+                <h1 class="title">{{carousel.text}}</h1>
+              </div>
+            </section>
+          </b-carousel-item>
+        </b-carousel>
+      </div>
+    </div>
+  </main>
 </div>
 </template>
 <script>
 import axios from 'axios'
 import Header from '../../Component/Header.vue';
 import Sidebar from '../../Component/Sidebar.vue';
+import PicSlide from '../../Component/PicSlide.vue';
 export default {
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    PicSlide,
   },
   data() {
     return {
@@ -68,7 +76,10 @@ export default {
   computed: {
     userId(){
       return this.$store.getters['auth/currentUser'].id
-    }
+    },
+    userName(){
+      return this.$store.getters['auth/currentUser'].name
+    },
   },
   created() {
 

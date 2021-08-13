@@ -20,7 +20,6 @@ import Signup from '../Pages/Signup.vue';
 import Signin from '../Pages/Signin.vue';
 
 const router  = new Router({
-    mode: "history",
     routes: [
       { path: '/',component: Home },
       { path: '/mypage/detail',component: MypageDetail },

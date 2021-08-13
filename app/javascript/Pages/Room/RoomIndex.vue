@@ -1,13 +1,12 @@
 <template>
 <div>
     <Header />
-    <div class="tile is-ancestor">
-        <div class="tile is-parent">
+    <main class="columns has-background-light">
+        <div class="column is-3 box">
             <Sidebar />
         </div>
-        <div class="tile is-parent is-vertical ">
+        <div class="column is-9">
             <div class="section">
-                
                 <b-pagination
                     :total="total"
                     v-model="current"
@@ -26,38 +25,36 @@
                     aria-current-label="Current page">
                 </b-pagination>
             </div>
-            <div class="tile">
-                <div class="tile is-child box section">
-                    
-                    <b-tabs>
-                        <b-tab-item label="ルーム一覧">
-                            <b-table
-                                :data="rooms"
-                                :columns="columns"
-                                :selected.sync="selected"
-                                focusable>
-                            </b-table>
-                        </b-tab-item>
+            <div class="box section">
+                
+                <b-tabs>
+                    <b-tab-item label="ルーム一覧">
+                        <b-table
+                            :data="rooms"
+                            :columns="columns"
+                            :selected.sync="selected"
+                            focusable>
+                        </b-table>
+                    </b-tab-item>
 
-                        <b-tab-item label="選択中">
-                            <article class="message is-primary">
-                                <div class="message-header">
-                                    <router-link :to="{ path: `/room/edit/${selected.id}`}" class="button is-primary">このルームを編集する</router-link>
-                                </div>
-                            <div class="message-body">
-                                <label class="label">コメント</label>
-                                <div class="box">
-                                    {{selected.comment}}
-                                </div>
+                    <b-tab-item label="選択中">
+                        <article class="message is-primary">
+                            <div class="message-header">
+                                <router-link :to="{ path: `/room/edit/${selected.id}`}" class="button is-primary">このルームを編集する</router-link>
                             </div>
-                            </article>
-                        </b-tab-item>
-                    </b-tabs>
-                   
-                </div>
+                        <div class="message-body">
+                            <label class="label">コメント</label>
+                            <div class="box">
+                                {{selected.comment}}
+                            </div>
+                        </div>
+                        </article>
+                    </b-tab-item>
+                </b-tabs>
+                
             </div>
         </div>
-    </div>
+    </main>
 </div>
 </template>
 <script>

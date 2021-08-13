@@ -1,94 +1,79 @@
 <template>
-    <b-sidebar
-        position="static"
-        :mobile="mobile"
-        :expand-on-hover="expandOnHover"
-        :delay="expandWithDelay ? 500 : null"
-        type="is-light"
-        open
-    >
-        <div class="p-1">
-            <div class="block">
-            <img
-                src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                alt="Lightweight UI components for Vue.js based on Bulma"
-            />
-            </div>
-            <b-menu class="is-custom-mobile">
-                <b-menu-list label="Menu">
+            
+<b-menu>
+    <b-menu-list label="Menu">
 
-                    <b-menu-item active expanded icon="account" label="マイページ">
-                        <b-menu-item 
-                            icon="account-details" 
-                            label="プロフィール"
-                            tag="router-link" to="/mypage/detail"
-                        ></b-menu-item>
+        <b-menu-item :active="isActive" expanded icon="account" label="マイページ">
+            <b-menu-item 
+                icon="account-details" 
+                label="プロフィール"
+                tag="router-link" to="/mypage/detail"
+            ></b-menu-item>
 
-                        <b-menu-item 
-                            icon="account-edit" 
-                            label="編集"
-                            tag="router-link" to="/mypage/edit/pro"
-                        ></b-menu-item>
+            <b-menu-item 
+                icon="account-edit" 
+                label="編集"
+                tag="router-link" to="/mypage/edit/pro"
+            ></b-menu-item>
 
-                        <b-menu-item 
-                            icon="account-box-outline" 
-                            label="アバター変更"
-                            tag="router-link" to="/mypage/edit/pic"
-                        ></b-menu-item>
-                    </b-menu-item>
+            <b-menu-item 
+                icon="account-box-outline" 
+                label="アバター変更"
+                tag="router-link" to="/mypage/edit/pic"
+            ></b-menu-item>
+        </b-menu-item>
 
-                    <b-menu-item icon="door" label="ルーム">
-                        <b-menu-item 
-                            icon="plus-circle" 
-                            label="ルームを作成"
-                            tag="router-link" to="/room/create"
-                        ></b-menu-item>
+        <b-menu-item icon="door" label="ルーム">
+            <b-menu-item 
+                icon="plus-circle" 
+                label="ルームを作成"
+                tag="router-link" to="/room/create"
+            ></b-menu-item>
 
-                        <b-menu-item 
-                            icon="magnify" 
-                            label="ルームを探す"
-                            tag="router-link" to="/room/search"
-                        ></b-menu-item>
+            <b-menu-item 
+                icon="magnify" 
+                label="ルームを探す"
+                tag="router-link" to="/room/search"
+            ></b-menu-item>
 
-                        <b-menu-item 
-                            icon="door-open" 
-                            label="ルームを編集"
-                            tag="router-link" to="/room/index"
-                        ></b-menu-item>
-                    </b-menu-item>
+            <b-menu-item 
+                icon="door-open" 
+                label="ルームを編集"
+                tag="router-link" to="/room/index"
+            ></b-menu-item>
+        </b-menu-item>
 
-                    <b-menu-item icon="email" label="メッセージ">
-                        <b-menu-item 
-                            icon="email-edit" 
-                            label="メッセージを送る"
-                            tag="router-link" to="/message/index"
-                        ></b-menu-item>
+        <b-menu-item icon="email" label="メッセージ">
+            <b-menu-item 
+                icon="email-edit" 
+                label="メッセージを送る"
+                tag="router-link" to="/message/index"
+            ></b-menu-item>
 
-                        <b-menu-item 
-                            icon="heart" 
-                            label="相手からのいいね"
-                            tag="router-link" to="/follower/index" 
-                        ></b-menu-item>
+            <b-menu-item 
+                icon="heart" 
+                label="相手からのいいね"
+                tag="router-link" to="/follower/index" 
+            ></b-menu-item>
 
-                        <b-menu-item 
-                            icon="bell" 
-                            label="マッチング済み"
-                            tag="router-link" to="/matching/index"
-                        ></b-menu-item>
-                    </b-menu-item>
+            <b-menu-item 
+                icon="bell" 
+                label="マッチング済み"
+                tag="router-link" to="/matching/index"
+            ></b-menu-item>
+        </b-menu-item>
 
-                </b-menu-list>
+    </b-menu-list>
 
-                <b-menu-list label="Actions">
-                    <b-menu-item 
-                        icon="logout" 
-                        label="Logout"
-                        v-on:click="logout()"
-                    ></b-menu-item>
-                </b-menu-list>
-            </b-menu>
-        </div>
-    </b-sidebar>
+    <b-menu-list label="Actions">
+        <b-menu-item 
+            icon="logout" 
+            label="Logout"
+            v-on:click="logout()"
+        ></b-menu-item>
+    </b-menu-list>
+</b-menu>
+
 </template>
 <script>
 import axios from 'axios';

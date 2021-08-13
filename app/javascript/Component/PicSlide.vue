@@ -1,7 +1,7 @@
 <template>
     <b-carousel>
         <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
-            <section :class="`hero is-medium is-${carousel.color}`">
+            <section :class="`hero is-small is-${carousel.color}`">
                 <div class="hero-body has-text-centered">
                     <figure class="image is-square">
                         <img src="https://bulma.io/images/placeholders/256x256.png">
