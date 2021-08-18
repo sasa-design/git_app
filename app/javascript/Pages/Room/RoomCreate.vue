@@ -1,18 +1,21 @@
 <template>
-<div>
-  <main class="columns has-background-light">
-    <div class="column is-3 box">
+<div class="body">
+  <Header />
+  <main class="columns columns-1">
+    <div class="column column-1 is-3 box">
       <Sidebar />
     </div>
     <div class="column is-9 my-6">
       <div class="tile is-ancestor">
         <div class="tile is-parent is-vertical">
           <div class="tile is-child card">
-            <header>
-              <label class="label">場所</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">場所</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="map-marker"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -70,16 +73,18 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>場所を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">場所を選択!</p>
             </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">ジャンル</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">ジャンル</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="credit-card"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -94,16 +99,18 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>ジャンルを選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">ジャンルを選択!</p>
             </footer>
           </div>
           <div class="box">
-            <header>
-              <label class="label">自己紹介</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">コメント</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="comment"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -115,58 +122,64 @@
 
         <div class="tile is-parent is-vertical">
           <div class="tile is-child card">
-            <header>
-              <label class="label">アーティスト</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">アーティスト</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="microphone"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 <input v-model="roomInfo.artist" class="input" type="text" placeholder="Normal input">
               </div>
             </div>
-            <footer>
-              <p>アーティストを入力!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">アーティストを入力!</p>
             </footer>
           </div>
 
           <div class="tile is-child card">
-            <header>
-              <label class="label">日付</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">日付</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="calendar-range"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 <input v-model="roomInfo.date" class="input" type="date">
               </div>
             </div>
-            <footer>
-              <p>日付を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">日付を選択!</p>
             </footer>
           </div>
 
           <div class="tile is-child card">
-            <header>
-              <label class="label">時間</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">時間</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="av-timer"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 <input v-model="roomInfo.time" class="input" type="time">
               </div>
             </div>
-            <footer>
-              <p>時間を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">時間を選択!</p>
             </footer>
           </div>
 
           <div class="tile is-child box">
-              <b-button type="is-success" v-on:click="roomCreate()">ルーム作成</b-button>
+            <b-button expanded type="is-primary" v-on:click="roomCreate()">ルーム作成</b-button>
           </div> 
         </div>
       </div>
@@ -204,8 +217,8 @@ export default {
   methods: {
     async roomCreate() {
       this.roomInfo.user_id = this.userId
-      await axios.post('/api/rooms', { room: this.roomInfo })
       try {
+        await axios.post('/api/rooms', { room: this.roomInfo })
         alert("登録完了");
         this.$router.push({path: '/mypage/detail'});
       }

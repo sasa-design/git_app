@@ -1,35 +1,39 @@
 <template>
 <div>
   <Header />
-  <main class="columns has-background-light">
-    <div class="column is-3 box">
+  <main class="columns columns-1 has-background-light">
+    <div class="column column-1 is-3 box">
       <Sidebar />
     </div>
     <div class="column is-5 my-6">
       <div class="tile is-ancestor">
         <div class="tile is-parent is-vertical">
           <div class="tile is-child card">
-            <header>
-              <label class="label">年齢</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">年齢</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="account-clock"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 <input v-model="profileInfo.age" class="input" type="number" placeholder="Normal input">
               </div>
             </div>
-            <footer>
-              <p>年齢を入力!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">年齢を入力!</p>
             </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">居住地</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">居住地</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="map-marker"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -87,17 +91,19 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>居住地を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">居住地を選択!</p>
             </footer>
           </div>
 
           <div class="tile is-child card">
-            <header>
-              <label class="label">見た目</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">見た目</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="account-cowboy-hat"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -112,16 +118,18 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>見た目を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">見た目を選択!</p>
             </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">所属</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">所属</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="account-tie"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -136,35 +144,39 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>所属を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">所属を選択!</p>
             </footer>
           </div>
         </div>
 
         <div class="tile is-parent is-vertical">
           <div class="tile is-child card">
-            <header>
-              <label class="label">身長</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">身長</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="human-male-height"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div>
                 <input v-model="profileInfo.height" class="input" type="number" placeholder="Normal input">
               </div>
             </div>
-            <footer>
-              <p>身長を入力!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">身長を入力!</p>
             </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">休日</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">休日</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="baguette"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -178,16 +190,18 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>休日を選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">休日を選択!</p>
             </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">煙草</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">煙草</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="smoking"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -200,16 +214,18 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>煙草について選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">煙草について選択!</p>
             </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">お酒</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">お酒</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="glass-wine"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
@@ -223,8 +239,8 @@
                 </div>
               </div>
             </div>
-            <footer>
-              <p>お酒について選択!</p>
+            <footer class="card-footer">
+              <p class="card-footer-item">お酒について選択!</p>
             </footer>
           </div>
         </div>
@@ -232,7 +248,7 @@
     </div>
     
     <div class="column is-4 my-6">
-      <div class="box py-6">
+      <div class="box">
         <header>
           <label class="label">自己紹介</label>
           <span class="icon">
@@ -246,7 +262,7 @@
         </div>
       </div>
       <div class="box">
-        <b-button mx-auto type="is-success" v-on:click="updateProfile()">編集完了</b-button>
+        <b-button expanded type="is-primary" v-on:click="updateProfile()">編集完了</b-button>
       </div>
     </div>
   </main>
@@ -299,10 +315,10 @@ export default {
         this.profileInfo.holiday = res.data.holiday
         this.profileInfo.smoke = res.data.smoke
         this.profileInfo.drink = res.data.drink
-        this.profileInfo.detail = res.data.drink
+        this.profileInfo.detail = res.data.detail
       }
       catch(error) {
-        aleart("error")
+        alert("error")
       }
     },
     async updateProfile(){
@@ -311,9 +327,8 @@ export default {
         alert('変更が完了しました');
         this.$router.push("/mypage/detail")
       }
-      catch(error){
+      catch{
         alert('変更に失敗しました');
-        console.log(error);
       }
     }
   }

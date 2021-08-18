@@ -1,8 +1,8 @@
 <template>
-<div class="body">
+<div>
   <Header />
-  <main class="columns columns-1">
-    <div class="column column-1 is-3 box">
+  <main class="columns has-background-light">
+    <div class="column is-3 box">
       <Sidebar />
     </div>
     <div class="column is-4 my-6">
@@ -21,7 +21,7 @@
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">{{this.userName}}</p>
+                <p class="title is-4">{{profileInfo.user.name}}</p>
               </div>
             </div>
           </div>
@@ -183,6 +183,16 @@
           </div>
         </div>
       </div>
+      <div class="box">
+        <b-message title="Info" type="is-info" has-icon aria-close-label="Close message">
+          お互いにいいねをするとメッセージができるようになります！！
+        </b-message>
+        <button class="button is-primary" v-on:click="likeUser()">
+          <span class="icon">
+            <b-icon icon="heart"></b-icon>
+          </span>
+        </button>
+      </div>
     </div>
   </main>
 </div>
@@ -200,53 +210,58 @@ export default {
   },
   data() {
     return {
-      profileInfo: {},
+      id: this.$route.params.id,
       header_image: "https://bulma.io/images/placeholders/1280x960.png",
       rounded_image: "https://bulma.io/images/placeholders/96x96.png",
+      profileInfo: {},
       firstDetail: "",
       secondDetail: "",
       detailBool: false
     }
   },
+  created() {
+    this.fetchProfile(this.id);
+    this.fetchImage(this.id)
+  },
   computed: {
     userId(){
       return this.$store.getters['auth/currentUser'].id
-    },
-    userName(){
-      return this.$store.getters['auth/currentUser'].name
-    },
-  },
-  created() {
-    this.fetchProfile();
-    this.fetchImage();
+    }
   },
   methods: {
-    async fetchProfile() {
-      const res = await axios.get(`/api/mypage/${this.userId}`)
-      this.profileInfo = res.data;
-      this.firstDetail = res.data.detail.substr( 0, 100 );
-      this.secondDetail = res.data.detail.substr( 101, 300 );
-      if(res.data.detail.length > 100) {
-        this.detailBool = true
+    async fetchProfile(id) {
+      const res = await axios.get(`/api/mypage/${id}`)
+      try {
+        this.profileInfo = res.data;
+        this.firstDetail = res.data.detail.substr( 0, 100 );
+        this.secondDetail = res.data.detail.substr( 101, 300 );
+        if(res.data.detail.length > 100) {
+          this.detailBool = true
+        }
+      } catch (error) {
+        aleart("error")
       }
     },
-    async fetchImage() {
-      const res = await axios.get(`/api/users/${this.userId}`)
+    async fetchImage(id) {
+      const res = await axios.get(`/api/users/${id}`)
       this.header_image = res.data.image
       this.rounded_image = res.data.image
+    },
+    async likeUser(){
+      try {
+        const res = await axios.post('/api/relationship',{
+          relationship:{
+            follower: this.id,
+            userId: this.userId
+          }
+        })
+        alert("いいねが完了しました")
+        this.$router.push({path: '/mypage/detail'})
+      }
+      catch(error){
+      　alert(error.response.data.error)
+      }
     }
   }
 }
 </script>
-<style>
-.columns-1{
-  background-size: cover;
-  background-position: center;
-  background-image: url('../../images/img/bg-01.png')
-}
-.column-1{
-  background-size: cover;
-  background-position: center;
-  background-image: url('../../images/img/bg-02.png')
-}
-</style>

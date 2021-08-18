@@ -1,33 +1,6 @@
 <template>
 <div class="body">
-  <Header />
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-            </div>
-
-            <div class="navbar-end">
-                <a class="navbar-item">SERVICE</a>
-                <a class="navbar-item">CONTACT</a>
-                <div class="buttons">
-                    <a class="button is-gray">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">Log in</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    <Header />
     <section class="hero hero-1 is-medium">
         <div class="hero-body">
             <div class="is-vcentered">
@@ -47,11 +20,11 @@
 </div>
 </template>
 <script>
-import Header from '../Component/Header.vue'
+import Header from "../Component/Header.vue";
 export default {
-  components: {
-    Header
-  }
+    components: {
+        Header,
+    }
 }
 </script>
 <style>
@@ -63,6 +36,7 @@ export default {
     @extend .hero;
     background-size: cover;
     background-position: center;
+    background-image: url('../images/img/bg-01.png')
 }
 
 .title {

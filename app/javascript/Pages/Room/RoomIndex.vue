@@ -1,8 +1,8 @@
 <template>
 <div>
     <Header />
-    <main class="columns has-background-light">
-        <div class="column is-3 box">
+    <main class="columns columns-1">
+        <div class="column column-1 is-3 box">
             <Sidebar />
         </div>
         <div class="column is-9">
@@ -37,18 +37,17 @@
                         </b-table>
                     </b-tab-item>
 
-                    <b-tab-item label="選択中">
-                        <article class="message is-primary">
-                            <div class="message-header">
-                                <router-link :to="{ path: `/room/edit/${selected.id}`}" class="button is-primary">このルームを編集する</router-link>
-                            </div>
-                        <div class="message-body">
-                            <label class="label">コメント</label>
-                            <div class="box">
-                                {{selected.comment}}
-                            </div>
-                        </div>
-                        </article>
+                    <b-tab-item label="選択中">                        
+                        <b-message title="コメント" type="is-primary">
+                            {{selected.comment}}
+                        </b-message>
+                        <router-link 
+                            :to="{path: `/room/edit/${selected.id}` }" 
+                            class="button is-primary" 
+                        >
+                        <span>このルームを編集する</span>
+                        </router-link>
+                        <a v-on:click="deleteRoom(selected.id)">このルームを削除する</a>
                     </b-tab-item>
                 </b-tabs>
                 
@@ -125,11 +124,14 @@ export default {
                     return qs.stringify(params)
                 },
                 responseType: 'json'
+            }).then(res => {
+                this.rooms = res.data;
+                this.total = res.data.length;
             })
-            .then(res => {
-                this.rooms = res.data.rooms;
-                this.total = res.data.rooms.length
-            })
+        },
+        async deleteRoom(id){
+            await axios.delete(`/api/rooms/${id}`)
+            fetchRooms()
         }
     }
 }

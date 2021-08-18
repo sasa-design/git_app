@@ -16,7 +16,6 @@ const mutations = {
   CLEAR_CURRENT_USER: () => {
     state.currentUser = null;
     localStorage.removeItem('currentUser');
-    this.$router.reload("/");
   }
 };
 

@@ -1,7 +1,7 @@
 <template>
-<div class="container is-primary">
+<div class="body">
   <Header />
-  <section class="hero is-fullheight is-success">
+  <section class="hero hero-1 is-fullheight">
     <div class="hero-body">
       <div class="is-vcentered mx-auto">
         <form>
@@ -63,11 +63,11 @@ export default {
       }
       try {
         const res = await axios.post("/api/users", userParams);
-        alert("登録完了");
+        alert(res.data.success);
         this.$router.push('/signin');
       } 
       catch(error) {
-        alert(error)
+        alert(error.response.data.message)
       }
     }
   }

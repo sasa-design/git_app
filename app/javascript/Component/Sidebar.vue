@@ -1,5 +1,4 @@
 <template>
-            
 <b-menu>
     <b-menu-list label="Menu">
 
@@ -62,16 +61,8 @@
                 tag="router-link" to="/matching/index"
             ></b-menu-item>
         </b-menu-item>
-
     </b-menu-list>
 
-    <b-menu-list label="Actions">
-        <b-menu-item 
-            icon="logout" 
-            label="Logout"
-            v-on:click="logout()"
-        ></b-menu-item>
-    </b-menu-list>
 </b-menu>
 
 </template>
@@ -83,8 +74,6 @@ export default {
       expandOnHover: false,
       expandWithDelay: false,
       mobile: "FullWidth",
-      mypageactive: "",
-      mypageexpanded: "",
     };
   },
   computed: {

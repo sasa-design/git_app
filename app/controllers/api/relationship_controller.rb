@@ -1,5 +1,4 @@
 class Api::RelationshipController < ApplicationController
-    before_action :authenticate, only: [:create]
     def index
         
     end
@@ -10,18 +9,17 @@ class Api::RelationshipController < ApplicationController
     end
 
     def create
-        relationship = Relationship.find_or_initialize_by(follow_id: current_user.id,follower_id: params[:follower])
-        unless params[:follow_id] = params[:follower_id]
-            relationship.save
+        relationship = Relationship.find_or_initialize_by(follow_id: follow_params[:userId],follower_id: follow_params[:follower])
+        if relationship.save
             head :no_content
         else
-            render json: relationship.errors, status: :unprocessable_entity
+            render json: {error: ['すでにいいねしています']} ,status: :unprocessable_entity
         end
     end
 
     private
     
     def follow_params
-        params.permit(:follower_id).merge(follow_id: current_user.id)
+        params.require(:relationship).permit(:userId,:follower)
     end
 end

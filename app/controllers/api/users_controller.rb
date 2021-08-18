@@ -24,19 +24,19 @@ class Api::UsersController < ApplicationController
   end
 
   def followers
-    page = params[:page]
-    per = 4
-    user = User.find(current_user.id)
+    page = matcher_params[:page] || 1
+    per = matcher_params[:per] || 8
+    user = User.find(matcher_params[:userId])
     users = user.follows.page(page).per(per)
     render json: users, each_serializer: ImageSerializer
   end
 
   def matchers
-    page = params[:page]
-    per = 4
-    user = User.find(current_user.id)
-    users = user.matchers.page(page).per(per)
-    render json: users, each_serializer: ImageSerializer
+    page = matcher_params[:page] || 1
+    per = matcher_params[:per] || 10
+    user = User.find(matcher_params[:userId])
+    @users = user.matchers.page(page).per(per)
+    render json: @users, each_serializer: ImageSerializer
   end
 
 
@@ -48,6 +48,10 @@ class Api::UsersController < ApplicationController
 
   def image_params
     params.require(:imageFile).permit(:image)
+  end
+
+  def matcher_params
+    params.require(:q).permit(:userId,:page,:per)
   end
 
 end

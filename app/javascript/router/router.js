@@ -10,12 +10,11 @@ import RoomIndex from '../Pages/Room/RoomIndex.vue';
 import RoomEdit from '../Pages/Room/RoomEdit.vue';
 import RoomSearch from '../Pages/Room/RoomSearch.vue';
 import RoomSearchShow from '../Pages/Room/RoomSearchShow.vue';
+import RoomUser from '../Pages/Room/RoomUser.vue';
 import MessageIndex from '../Pages/Message/MessageIndex.vue';
 import MessageShow from '../Pages/Message/MessageShow.vue';
-import MatchingIndex from '../Pages/Message/MatchingIndex.vue';
-import MatchingShow from '../Pages/Message/MatchingShow.vue';
 import FollowerIndex from '../Pages/Message/FollowerIndex.vue';
-import FollowerShow from '../Pages/Message/FollowerShow.vue';
+import UserShow from '../Pages/Message/UserShow.vue';
 import Signup from '../Pages/Signup.vue';
 import Signin from '../Pages/Signin.vue';
 
@@ -30,12 +29,11 @@ const router  = new Router({
       { path: '/room/edit/:id',component: RoomEdit },
       { path: '/room/search',component: RoomSearch },
       { path: '/room/search/show/:id',component: RoomSearchShow },
+      { path: '/room/user/:id',component: RoomUser},
       { path: '/message/index',component: MessageIndex },
-      { path: '/message/show',component: MessageShow },
-      { path: '/matching/index',component: MatchingIndex },
-      { path: '/matching/show',component: MatchingShow },
+      { path: '/message/show/:id',component: MessageShow },
+      { path: '/user/show/:id',component: UserShow},
       { path: '/follower/index',component: FollowerIndex},
-      { path: '/follower/show',component: FollowerShow },   
       { path: '/signup',component: Signup },
       { path: '/signin',component: Signin }
     ],

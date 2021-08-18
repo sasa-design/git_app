@@ -1,50 +1,54 @@
 <template>
-<div>
+<div class="body">
   <Header />
-  <main class="columns has-background-light">
-    <div class="column is-3 box">
+  <main class="columns columns-1 has-background-light">
+    <div class="column column-1 is-3 box">
       <Sidebar />
     </div>
     <div class="column is-4 my-6">
       <div class="box">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">{{this.userName}}</p>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img :src="header_image" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img class="is-rounded" :src="rounded_image" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{this.userName}}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
     <div class="column is-5 my-6">
       <div class="box">
         <div class="buttons">
-          <b-button type="is-primary" expanded v-on:click="imageUpdate()">Expanded</b-button>
+          <b-button type="is-primary" expanded v-on:click="imageUpdate()">Upload</b-button>
         </div>
-        <input type="file" v-on:change="setImage()">
-      </div>
-      <div class="box">
-        <b-carousel>
-          <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
-            <section :class="`hero is-medium is-${carousel.color}`">
-              <div class="hero-body has-text-centered">
-                <h1 class="title">{{carousel.text}}</h1>
-              </div>
-            </section>
-          </b-carousel-item>
-        </b-carousel>
+        <div class="file has-name is-boxed">
+          <label class="file-label">
+            <input class="file-input" v-on:change="setImage()" type="file" name="resume">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name">
+              {{uploadedImage}}
+            </span>
+          </label>
+        </div>
       </div>
     </div>
   </main>
@@ -65,12 +69,8 @@ export default {
     return {
       uploadedImage: '',
       imageFile: {},
-      carousels: [
-        { image: 'https://bulma.io/images/placeholders/256x256.png', color: 'primary' },
-        { image: 'https://bulma.io/images/placeholders/256x256.png', color: 'info' },
-        { image: 'Slide 3', color: 'success' },
-        { image: 'Slide 4', color: 'warning' },
-      ]
+      header_image: "https://bulma.io/images/placeholders/1280x960.png",
+      rounded_image: "https://bulma.io/images/placeholders/96x96.png"
     }
   },
   computed: {
@@ -82,9 +82,10 @@ export default {
     },
   },
   created() {
-
+    this.fetchImage();
   },
   methods: {
+    
     deleteDropFile() {
       this.dropFile = ""
     },
@@ -99,25 +100,19 @@ export default {
     },
     async fetchImage() {
       const res = await axios.get(`/api/users/${this.userId}`)
-      try {
-        this.carousels[0].image = res.data.image
-        this.carousels[1].image = res.data.image
-      }
-      catch(error) {
-        aleart("データの所得に失敗しました")
-        this.$router.push("/mypage/detail")
-      }
+      this.header_image = res.data.image
+      this.rounded_image = res.data.image
     },
     async imageUpdate() {
-      const res = await axios.put(`/api/users/${this.userId}`,{imageFile: this.imageFile })
       try {
-        aleart("アップロード完了")
+        const res = await axios.put(`/api/users/${this.userId}`,{imageFile: this.imageFile })
+        alert("アップロード完了")
         this.imageFile = {},
-        this.uploadedImage = res.data;
-        this.$router.push("/mypage/detail")
+        this.uploadedImage = "";
+        this.fetchImage();
       }
-      catch(error){
-        aleart(error)
+      catch{
+        alert("アップロードに失敗しました")
       }
     }
   }

@@ -1,9 +1,10 @@
 <template>
-<div class="container is-primary">
+<div class="body">
   <Header />
-  <section class="hero is-fullheight is-success">
+  <section class="hero hero-1 is-fullheight">
     <div class="hero-body">
-      <div class="is-vcentered mx-auto has-background-danger-dark">
+      <div class="is-vcentered mx-auto">
+        <form>
           <div class="box">
             
             <b-field label="メールアドレス">
@@ -25,8 +26,9 @@
 
           </div>
           <div>
-            <b-button type="submit" expanded v-on:click="login()">ログイン</b-button>
+            <b-button class="has-text-white has-back has-background-success"  expanded v-on:click="login()">ログイン</b-button>
           </div>
+        </form>
       </div>
     </div>
   </section>
@@ -59,11 +61,12 @@ export default {
         alert("ログインに成功しました")
         this.$router.push("/mypage/detail");
       } catch(error){
-        alert(error);
+        alert(error.response.data.error.messages);
       }
     }
   }
 }
 </script>
 <style>
+
 </style>

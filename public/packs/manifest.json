@@ -1,13 +1,13 @@
 {
-  "application.js": "/packs/js/application-a805c422e667685ce104.js",
-  "application.js.map": "/packs/js/application-a805c422e667685ce104.js.map",
+  "application.js": "/packs/js/application-4ee18558954ffc1b4680.js",
+  "application.js.map": "/packs/js/application-4ee18558954ffc1b4680.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-a805c422e667685ce104.js"
+        "/packs/js/application-4ee18558954ffc1b4680.js"
       ],
       "js.map": [
-        "/packs/js/application-a805c422e667685ce104.js.map"
+        "/packs/js/application-4ee18558954ffc1b4680.js.map"
       ]
     }
   },
@@ -15,5 +15,9 @@
   "media/fonts/materialdesignicons-webfont.ttf?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-0e4e0b3d.ttf",
   "media/fonts/materialdesignicons-webfont.woff2?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-e9db4005.woff2",
   "media/fonts/materialdesignicons-webfont.woff?v=5.9.55": "/packs/media/fonts/materialdesignicons-webfont-d8e8e0f7.woff",
-  "media/images/iStock-1191126509.jpg": "/packs/media/images/iStock-1191126509-b1cc4370f04c80ceb66d8c32429dd4a5.jpg"
+  "media/images/iStock-1191126509.jpg": "/packs/media/images/iStock-1191126509-b1cc4370f04c80ceb66d8c32429dd4a5.jpg",
+  "media/images/img/bg-01.png": "/packs/media/images/img/bg-01-29412b1fd2339ea446885ab218877ed7.png",
+  "media/images/img/bg-02.png": "/packs/media/images/img/bg-02-0d6cfe31031c092b264b7c9032258d98.png",
+  "media/images/img/favicon.png": "/packs/media/images/img/favicon-927f3e0ca445cb036684014528bff542.png",
+  "media/images/img/logo.png": "/packs/media/images/img/logo-2dab1ddc2f88a6fd3b197b809fe061d3.png"
 }
