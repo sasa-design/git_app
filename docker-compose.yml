@@ -14,12 +14,12 @@ services:
     build: .
     volumes:
       - .:/rails_vue_app
-    #  - ./public:/usr/share/nginx/public:cached
-      - tmp-data:/rails_vue_app/tmp
+      - ./public:/usr/share/nginx/public:cached
+      - tmp-data:/git_app/tmp
       - gem_data:/usr/local/bundle
       - node_modules:/app/node_modules
     command: bundle exec foreman start -f Procfile.dev
-    # bundle exec unicorn -p 3000 -c /rails_vue_app/config/unicorn.conf.rb
+    # bundle exec unicorn -p 3000 -c /git_app/config/unicorn.conf.rb
     ports:
       - "3000:3000"
       - "3035:3035"
@@ -27,17 +27,17 @@ services:
       - db
     tty: true
     stdin_open: true
-  #nginx:
-  #  build:
-  #    context: ./nginx
-  #  volumes:
-  #    - ./public:/usr/share/nginx/public:cached
-  #    - tmp-data:/rails_vue_app/tmp
-  #  ports: 
-  #    - 80:80
-  #  depends_on: 
-  #    - web
-  #    - db  
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - ./public:/usr/share/nginx/public:cached
+      - tmp-data:/git_app/tmp
+    ports: 
+      - 80:80
+    depends_on: 
+      - web
+      - db  
 volumes:
   mysql_data:
   gem_data:
