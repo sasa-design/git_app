@@ -55,11 +55,6 @@
                 tag="router-link" to="/follower/index" 
             ></b-menu-item>
 
-            <b-menu-item 
-                icon="bell" 
-                label="マッチング済み"
-                tag="router-link" to="/matching/index"
-            ></b-menu-item>
         </b-menu-item>
     </b-menu-list>
 

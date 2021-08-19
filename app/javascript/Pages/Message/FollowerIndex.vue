@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body">
     <Header />
     <main class="columns columns-1">
         <div class="column column-1 is-3 box">
@@ -82,12 +82,12 @@ export default {
             return this.$store.state.userinfo.followers
         }
     },
-    created: function(){
+    created(){
         this.fetchFollowers();
     },
     methods: {
-        async fetchFollowers(){
-            await this.$store.dispatch('userinfo/fetchfollowers',{
+        fetchFollowers(){
+            this.$store.dispatch('userinfo/fetchfollowers',{
                 params:{
                     q: {
                         userId: this.userId,
@@ -99,6 +99,9 @@ export default {
                     return qs.stringify(params)
                 },
                 responseType: 'json'
+            })
+            .then(res => {
+                this.total = res.data.length
             });
         },
         async likeUser(id) {
@@ -115,7 +118,10 @@ export default {
             catch(error){
                 alert(error.response.data)
             }
-        }
+        },
+        pageChange(id){
+            this.$router.push({path: `/user/show/${id}`})
+        },
     }
 }
 </script>

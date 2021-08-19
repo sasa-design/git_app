@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body">
   <Header />
   <main class="columns columns-1">
     <div class="column column-1 is-3 box">
@@ -7,7 +7,25 @@
     </div>
     <div class="column is-4 my-6">
       <div class="box py-6">
-        <PicSlide />
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img :src="header_image" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img class="is-rounded" :src="rounded_image" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{this.profileInfo.user.name}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="box">
         <section>
@@ -32,144 +50,136 @@
               {{secondDetail}} <br/> 
             </p>
           </b-collapse>
-          <footer class="card-footer">
-              <router-link to="/mypage/edit/pro" class="card-footer-item">Edit</router-link>
-          </footer>
         </section>
+      </div>
+      <div class="box">
+        <button class="button is-primary expanded" v-on:click="toMessage(id)">メッセージを作成しにいく</button>
       </div>
     </div>
     <div class="column is-5 my-6">
       <div class="tile is-ancestor">
         <div class="tile is-parent is-vertical">
           <div class="tile is-child card">
-            <header>
-              <label class="label">年齢</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">年齢</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="account-clock"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.age}}
               </div>
             </div>
-            <footer>
-              <p>何歳？</p>
-            </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">居住地</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">居住地</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="map-marker"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.living}}
               </div>
             </div>
-            <footer>
-              <p>どこに住んでる？</p>
-            </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">見た目</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">見た目</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="account-cowboy-hat"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.look}}
               </div>
             </div>
-            <footer>
-              <p>どんな見た目？</p>
-            </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">所属</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">所属</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="account-tie"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.belongs}}
               </div>
             </div>
-            <footer>
-              <p>どの属性？</p>
-            </footer>
           </div>
         </div>
         <div class="tile is-parent is-vertical">
           <div class="tile is-child card">
-            <header>
-              <label class="label">身長</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">身長</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="human-male-height"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.height}}
               </div>
             </div>
-            <footer>
-              <p>身長は何ｃｍ？</p>
-            </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">休日</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">休日</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="baguette"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.holiday}}
               </div>
             </div>
-            <footer>
-              <p>休日はいつ？</p>
-            </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">煙草</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">煙草</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="smoking"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.smoke}}
               </div>
             </div>
-            <footer>
-              <p>煙草は吸う？</p>
-            </footer>
           </div>
           <div class="tile is-child card">
-            <header>
-              <label class="label">お酒</label>
-              <span class="icon">
-                <i class="fas fa-angle-down"></i>
-              </span>
+            <header class="card-header">
+              <p class="card-header-title">お酒</p>
+              <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <b-icon icon="glass-wine"></b-icon>
+                </span>
+              </button>
             </header>
             <div class="card-content">
               <div class="content">
                 {{profileInfo.drink}}
               </div>
             </div>
-            <footer>
-              <p>お酒はどのくらい飲む？</p>
-            </footer>
           </div>
         </div>
       </div>
@@ -214,6 +224,9 @@ export default {
         aleart("error")
       }
     },
+    toMessage(id){
+      this.$router.push({path: `/message/show/${id}`})
+    }
   }
 }
 </script>

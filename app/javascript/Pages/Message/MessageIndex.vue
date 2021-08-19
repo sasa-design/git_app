@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body">
     <Header />
     <main class="columns columns-1">
         <div class="column column-1 is-3 box">
@@ -25,17 +25,24 @@
                     aria-current-label="Current page">
                 </b-pagination>
             </div>
-            <div class="card" v-for="matcher in matchers">
-                <div class="card-content">
-                    <div class="content">
-                        <img :src="matcher.image">
-                        <p>{{matcher.name}}</p>
+            <div class="card">
+                <div class="columns is-gapless is-multiline is-mobile">
+                    <div class="column is-one-quarter"  v-for="matcher in matchers">
+                        <p class="title">
+                            <figure class="image is-48x48">
+                                <img class="is-rounded" :src="matcher.image" alt="Placeholder image" v-on:click="pageChange(matcher.id)">
+                            </figure>
+                        </p>
+                        <p class="subtitle">
+                            {{matcher.name}}
+                            <button class="button is-primary" v-on:click="toMessage(matcher.id)">
+                                <span class="icon">
+                                    <b-icon icon="email"></b-icon>
+                                </span>
+                            </button>
+                        </p>
                     </div>
                 </div>
-                <footer class="card-footer">
-                    <router-link :to="{path: `/message/show`}" class="card-footer-item is-primary"><b-icon icon="email"></b-icon></router-link>
-                    <router-link :to="{path: `/user/show/${matcher.id}`}" class="card-footer-item is-primary">ユーザー詳細</router-link>
-                </footer>
             </div>
         </div>
     </main>
@@ -51,13 +58,12 @@ export default {
     components: {
         Header,
         Sidebar,
-        PicSlide,
     },
     data() {
         return {
             total: "",
             current: 1,
-            perPage: 9,
+            perPage: 8,
             rangeBefore: 1,
             rangeAfter: 1,
             order: 'is-centered',
@@ -75,12 +81,12 @@ export default {
             return this.$store.state.userinfo.matchers
         }
     },
-    created: function(){
+    created(){
         this.fetchMatchers();
     },
     methods: {
-        async fetchMatchers(){
-            await this.$store.dispatch('userinfo/fetchmatchers',{
+        fetchMatchers(){
+            this.$store.dispatch('userinfo/fetchmatchers',{
                 params:{
                     q: {
                         userId: this.userId,
@@ -92,8 +98,17 @@ export default {
                     return qs.stringify(params)
                 },
                 responseType: 'json'
+            })
+            .then(res => {
+                this.total = res.data.length
             });
         },
+        pageChange(id){
+            this.$router.push({path: `/user/show/${id}`})
+        },
+        toMessage(id){
+            this.$router.push({path: `/message/show/${id}`})
+        }
     }
 }
 </script>

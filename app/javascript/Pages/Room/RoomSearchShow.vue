@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body">
     <Header />
     <main class="columns has-background-light">
         <div class="column is-3 box">
