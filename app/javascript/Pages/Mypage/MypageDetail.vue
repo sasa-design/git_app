@@ -239,5 +239,14 @@ export default {
 }
 </script>
 <style>
-
+.columns-1{
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../images/img/bg-01.png')
+}
+.column-1{
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../images/img/bg-02.png')
+}
 </style>
