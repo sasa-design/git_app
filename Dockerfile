@@ -11,12 +11,12 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget \
 
 RUN apt-get install -y nodejs \
     && apt-get install -y vim 
-WORKDIR /git_app
-COPY Gemfile /git_app/Gemfile
+WORKDIR /rails_vue_app
+COPY Gemfile /rails_vue_app/Gemfile
 COPY Gemfile.lock /git_app/Gemfile.lock
 RUN bundle install
 
-COPY . /git_app
+COPY . /rails_vue_app
 COPY package.json .
 COPY yarn.lock .
 RUN yarn install
