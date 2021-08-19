@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body">
     <Header />
     <main class="columns columns-1">
         <div class="column column-1 is-3 box">
