@@ -1,0 +1,57 @@
+
+.body {
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.hero-1 {
+    @extend .hero;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../images/img/bg-01.png')
+}
+
+.title {
+    font-weight: lighter;
+}
+
+.scroll {
+    font-size: 150px;
+    animation: loop-slide 18s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes loop-slide {
+    0% {
+        transform: translateX(100%)
+    }
+    100% {
+        transform: translateX(-100%)
+    }
+}
+
+footer {
+    background-color: linear-gradient(45deg, #3bade3, #9844b7, #44ea76)!important;
+    animation: bggradient 20s ease infinite;
+}
+
+@keyframes bggradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.columns-1{
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../images/img/bg-01.png')
+  }
+  .column-1{
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../images/img/bg-02.png')
+}
