@@ -11,7 +11,6 @@ import Vue from 'vue'
 import App from '../app.vue'
 import VueRouter from 'vue-router'
 import router from '../router/router.js'
-import stylesheet from '../stylesheets/application.scss'
 import Store from '../store/store.js'
 import qs from 'qs'
 import '@mdi/font/css/materialdesignicons.css';
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     images,
     store:Store,
     qs,
-    stylesheet,
     router,
     render: h => h(App)
   }).$mount()
