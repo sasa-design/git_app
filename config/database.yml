@@ -19,7 +19,10 @@ default: &default
 
 development:
   <<: *default
-  database: rails_vue_app_development
+  host: <%= Rails.application.credentials.dig(:aws, :rds, :host) %>
+  database: <%= Rails.application.credentials.dig(:aws, :rds, :database) %>
+  username: <%= Rails.application.credentials.dig(:aws, :rds, :username) %>
+  password: <%= Rails.application.credentials.dig(:aws, :rds, :password) %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

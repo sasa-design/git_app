@@ -13,7 +13,7 @@ RUN apt-get install -y nodejs \
     && apt-get install -y vim 
 WORKDIR /rails_vue_app
 COPY Gemfile /rails_vue_app/Gemfile
-COPY Gemfile.lock /git_app/Gemfile.lock
+COPY Gemfile.lock /rails_vue_app/Gemfile.lock
 RUN bundle install
 
 COPY . /rails_vue_app
